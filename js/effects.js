@@ -39,7 +39,7 @@ export function initStrands() {
     k2: 2 + Math.random() * 3,
     speed: 0.25 + Math.random() * 0.5,
     phase: Math.random() * Math.PI * 2,
-    hue: [265, 320, 200, 150][i % 4] + Math.random() * 20,
+    hue: [280, 315, 265, 300][i % 4] + Math.random() * 16,
     len: 0.72 + Math.random() * 0.26,
   }));
   const resize = () => {
@@ -65,8 +65,8 @@ export function initStrands() {
       // glowing fiber tip
       const ye = yAt(s, s.len);
       const g = ctx.createRadialGradient(endX, ye, 0, endX, ye, 7);
-      g.addColorStop(0, "rgba(255, 214, 140, 0.95)");
-      g.addColorStop(1, "rgba(255, 214, 140, 0)");
+      g.addColorStop(0, "rgba(255, 194, 240, 0.95)");
+      g.addColorStop(1, "rgba(255, 194, 240, 0)");
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(endX, ye, 7, 0, Math.PI * 2); ctx.fill();
     }

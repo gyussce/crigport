@@ -31,7 +31,7 @@ export function initParticles() {
     uSwirl: { value: 0 },                      // vortex blowout
     uSize: { value: 10 },
     uTexture: { value: null },
-    uAccent: { value: new THREE.Color("#c8ff3d") },
+    uAccent: { value: new THREE.Color("#cc6bff") },
   };
 
   return new Promise((resolve) => {

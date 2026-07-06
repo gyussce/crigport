@@ -1,6 +1,6 @@
 /* ═══ CRIG® — project data. Add project № 11 here. ═══ */
 export const PROJECTS = [
-  { title: "Velocity", tag: "Sport & Performance", year: "2026", href: "projects/AccelerationAFM/index.html", img: "assets/proj_velocity.svg", accent: "#c8ff3d", big: "SPEED" },
+  { title: "Velocity", tag: "Sport & Performance", year: "2026", href: "projects/AccelerationAFM/index.html", img: "assets/proj_velocity.svg", accent: "#b16bff", big: "SPEED" },
   { title: "Glow Beauty Studio", tag: "Beauty & Wellness", year: "2026", href: "projects/BeautyDemo/index.html", img: null, accent: "#ff7ac6", big: "GLOW" },
   { title: "Perfect Place Remodeling", tag: "Construction", year: "2026", href: "projects/HernandezPaintingSolution/index.html", img: "assets/proj_remodel.jpg", accent: "#ff8a3d", big: "BUILD" },
   { title: "Midwest Paint Pros", tag: "Painting Contractor", year: "2026", href: "projects/PaintPros/index.html", img: null, accent: "#5ca8ff", big: "FRESH\nCOATS" },

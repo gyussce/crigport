@@ -8,11 +8,11 @@
 .contact::before {
   content: ""; position: absolute; inset: 0; z-index: 0;
   background:
-    radial-gradient(120% 90% at 15% 18%, #ffd9e8 0%, transparent 55%),
-    radial-gradient(100% 80% at 85% 12%, #d9f2ff 0%, transparent 55%),
-    radial-gradient(120% 90% at 82% 85%, #e8dcff 0%, transparent 55%),
-    radial-gradient(100% 90% at 22% 82%, #dbffe9 0%, transparent 55%),
-    linear-gradient(160deg, #f6f2ff 0%, #eef7ff 45%, #fdf1f6 100%);
+    radial-gradient(120% 90% at 15% 18%, #ffcdee 0%, transparent 55%),
+    radial-gradient(100% 80% at 85% 12%, #e4d0ff 0%, transparent 55%),
+    radial-gradient(120% 90% at 82% 85%, #ffd2f4 0%, transparent 55%),
+    radial-gradient(100% 90% at 22% 82%, #ecd6ff 0%, transparent 55%),
+    linear-gradient(160deg, #f7f0ff 0%, #fbe9ff 48%, #fdeef8 100%);
   animation: holo-shift 14s linear infinite;
 }
 @keyframes holo-shift { 50% { filter: hue-rotate(40deg) saturate(1.25); } }

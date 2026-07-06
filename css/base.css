@@ -1,12 +1,12 @@
 /* ═══════════════════ CRIG® — base: tokens, reset, chrome ═══════════════════ */
 :root {
-  --bg: #0b0b10;
-  --bg-2: #101018;
-  --ink: #f2f0ea;
-  --ink-dim: #9a97a3;
-  --acid: #c8ff3d;
-  --violet: #7c5cff;
-  --line: rgba(242, 240, 234, 0.12);
+  --bg: #0e0713;          /* near-black deep aubergine */
+  --bg-2: #170d24;        /* dark grape */
+  --ink: #f3ecf8;         /* pale lavender white */
+  --ink-dim: #a495b8;     /* muted grape-gray */
+  --acid: #bd5bff;        /* electric grape — primary pop (var name kept) */
+  --violet: #ff54c8;      /* bubblegum magenta — secondary pop */
+  --line: rgba(243, 236, 248, 0.12);
   --font-display: "Syne", sans-serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-serif: "Instrument Serif", serif;
@@ -71,7 +71,7 @@ img, video { display: block; max-width: 100%; }
   position: fixed; top: 0; left: 0; z-index: 96;
   width: 100%; height: 2px;
   background: var(--acid);
-  box-shadow: 0 0 12px rgba(200, 255, 61, 0.6);
+  box-shadow: 0 0 14px rgba(189, 91, 255, 0.7);
   transform: scaleX(0); transform-origin: left center;
   pointer-events: none;
 }

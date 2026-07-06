@@ -1,4 +1,4 @@
-# CRIG® — Portfolio of Ganiu Yussuf
+# CRIG® — Portfolio of Abo Yussuf
 
 Hand-coded 3D scrolling portfolio. No build step, no frameworks to install —
 plain HTML/CSS/JS with three.js, GSAP, and Lenis loaded from CDNs.

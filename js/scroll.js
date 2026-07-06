@@ -78,18 +78,20 @@ export function initReveals() {
 }
 
 export function initPhotoFan() {
-  const cards = gsap.utils.toArray("#photoStack .pcard");
-  if (!cards.length) return;
-  gsap.set(cards, { xPercent: -50, yPercent: -50 });
+  const card = document.querySelector("#photoStack .pcard");
+  if (!card) return;
+  // rest a little BELOW center so it always clears the "THE HUMAN BEHIND IT" heading
+  gsap.set(card, { xPercent: -50, yPercent: -40 });
   if (reduced) return;
-  // single portrait: rise + settle from a slight tilt, then a gentle scroll parallax
-  gsap.from(cards[0], {
-    yPercent: -30, rotate: -6, scale: 0.9, opacity: 0, filter: "blur(6px)",
+  // reveal uses px-y + scale/rotate/blur (leaves yPercent free for the parallax below)
+  gsap.from(card, {
+    y: 44, rotate: -4, scale: 0.92, autoAlpha: 0, filter: "blur(6px)",
     ease: "power3.out",
-    scrollTrigger: { trigger: "#about", start: "top 78%", end: "center center", scrub: 1 },
+    scrollTrigger: { trigger: "#about", start: "top 76%", end: "center 62%", scrub: 1 },
   });
-  gsap.to(cards[0], {
-    yPercent: -68, ease: "none",
-    scrollTrigger: { trigger: "#about", start: "top bottom", end: "bottom top", scrub: 1.2 },
+  // gentle downward drift only — never travels up toward the heading
+  gsap.to(card, {
+    yPercent: -26, ease: "none",
+    scrollTrigger: { trigger: "#about", start: "top bottom", end: "bottom top", scrub: 1.4 },
   });
 }
