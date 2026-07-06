@@ -1,0 +1,36 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "iul-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/ganiuyussuf/Downloads/IULDemo/serve.py"],
+      "port": 3456
+    },
+    {
+      "name": "paintpros",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/ganiuyussuf/Downloads/PaintPros/serve.py"],
+      "port": 8090,
+      "autoPort": true
+    },
+    {
+      "name": "hernandez",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "8091", "/Users/ganiuyussuf/Downloads/UltEx"],
+      "port": 8091
+    },
+    {
+      "name": "beauty-demo",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-c", "import http.server,os;os.chdir('/Users/ganiuyussuf/Downloads/BeautyDemo');http.server.HTTPServer(('',8092),http.server.SimpleHTTPRequestHandler).serve_forever()"],
+      "port": 8092
+    },
+    {
+      "name": "acceleration",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/Users/ganiuyussuf/Downloads/UltEx/acceleration/serve.py"],
+      "port": 8093
+    }
+  ]
+}

@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOCITY | Elite Soccer Training</title>
+<meta name="description" content="Elite private soccer training. Speed, skill, and game intelligence — train fast, play faster.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#E53935;--dark-red:#B71C1C;--crimson:#DC143C;
+  --bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;
+  --text:#fff;--text-dim:#999;--text-muted:#666;
+  --gold:#FFD700;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);
+  overflow-x:hidden;cursor:default;
+}
+::selection{background:var(--red);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:3px}
+
+/* CUSTOM CURSOR */
+.cursor{position:fixed;width:20px;height:20px;border:2px solid var(--red);border-radius:50%;pointer-events:none;z-index:10000;transition:transform .15s,opacity .15s;mix-blend-mode:difference}
+.cursor-dot{position:fixed;width:6px;height:6px;background:var(--red);border-radius:50%;pointer-events:none;z-index:10001}
+.cursor.hover{transform:scale(2.5);border-color:var(--gold);background:rgba(229,57,53,.15)}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s,visibility .8s}
+.loader.hidden{opacity:0;visibility:hidden}
+.loader-logo{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);color:var(--red);letter-spacing:.2em;animation:pulse 1.5s ease-in-out infinite}
+.loader-bar{width:200px;height:3px;background:#222;border-radius:2px;margin-top:2rem;overflow:hidden}
+.loader-bar::after{content:'';display:block;width:0%;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));border-radius:2px;animation:loadBar 2s ease forwards}
+@keyframes loadBar{to{width:100%}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* NAVIGATION */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(0,0,0,.9);backdrop-filter:blur(20px);padding:1rem 3rem;box-shadow:0 2px 40px rgba(229,57,53,.15)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);letter-spacing:.15em;text-decoration:none;position:relative}
+.nav-logo span{color:#fff}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--red);transition:width .3s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:.6rem 1.8rem;background:transparent;border:1px solid var(--red);color:var(--red);font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none}
+.nav-cta:hover{background:var(--red);color:#fff;box-shadow:0 0 30px rgba(229,57,53,.4)}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:28px;height:2px;background:#fff;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+/* THREE.JS CANVAS */
+#hero-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;overflow:hidden}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(229,57,53,.08),transparent 60%),linear-gradient(180deg,transparent 60%,var(--bg));z-index:1}
+.hero-content{position:relative;z-index:2;padding:0 8%;max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border:1px solid rgba(229,57,53,.3);border-radius:50px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:2rem;backdrop-filter:blur(10px)}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 2s infinite}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,11vw,9rem);line-height:.9;letter-spacing:.05em;margin-bottom:1.5rem}
+.hero-title .line{display:block;overflow:hidden;overflow-x:visible;overflow-y:clip}
+.hero-title .line span{display:inline-block;transform:translateY(110%)}
+.hero-title .accent{color:var(--red);-webkit-text-stroke:0}
+.hero-title .outline{-webkit-text-stroke:2px rgba(255,255,255,.3);color:transparent}
+.hero-sub{font-size:clamp(.9rem,1.5vw,1.15rem);color:var(--text-dim);line-height:1.8;max-width:500px;margin-bottom:2.5rem;font-weight:300}
+.hero-buttons{display:flex;gap:1.5rem;flex-wrap:wrap}
+.btn-primary{padding:1rem 3rem;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;position:relative;overflow:hidden;transition:all .3s;text-decoration:none}
+.btn-primary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s}
+.btn-primary:hover::before{left:100%}
+.btn-primary:hover{box-shadow:0 0 40px rgba(229,57,53,.5);transform:translateY(-2px)}
+.btn-outline{padding:1rem 3rem;background:transparent;border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+.hero-scroll{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.hero-scroll span{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--red),transparent);animation:scrollDown 2s ease-in-out infinite}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* SECTION COMMON */
+section{padding:clamp(4rem,10vw,8rem) 8%}
+.section-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;display:flex;align-items:center;gap:1rem}
+.section-label::before{content:'';width:40px;height:1px;background:var(--red)}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);line-height:1;margin-bottom:1.5rem;letter-spacing:.03em}
+.section-title .red{color:var(--red)}
+
+/* STATS TICKER */
+.stats-ticker{background:var(--red);padding:1rem 0;overflow:hidden;position:relative}
+.ticker-track{display:flex;gap:4rem;animation:ticker 20s linear infinite;white-space:nowrap}
+.ticker-item{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;display:flex;align-items:center;gap:.8rem;flex-shrink:0}
+.ticker-item .num{font-size:2rem;color:#000}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-image{position:relative;overflow:hidden}
+.about-image img{width:100%;height:540px;object-fit:cover;filter:brightness(.95);transition:transform .6s}
+.about-image:hover img{transform:scale(1.04)}
+.about-image::after{content:'';position:absolute;inset:0;border:1px solid var(--red);transform:translate(15px,15px);pointer-events:none;transition:transform .4s}
+.about-image:hover::after{transform:translate(10px,10px)}
+.about-text p{color:var(--text-dim);line-height:1.9;margin-bottom:1.5rem;font-weight:300}
+.about-credentials{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+.credential{padding:.5rem 1.2rem;border:1px solid rgba(255,255,255,.1);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);transition:all .3s}
+.credential:hover{border-color:var(--red);color:var(--red)}
+
+/* TRAINING FOCUS */
+.training{background:var(--bg2)}
+.focus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:3rem}
+.focus-card{background:var(--bg);border:1px solid rgba(255,255,255,.05);padding:2.5rem;position:relative;overflow:hidden;transition:all .5s;cursor:default}
+.focus-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height .5s}
+.focus-card:hover::before{height:100%}
+.focus-card:hover{border-color:rgba(229,57,53,.3);transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.focus-icon{font-size:2.5rem;margin-bottom:1.5rem;display:block}
+.focus-card h3{font-family:'Oswald',sans-serif;font-size:1.3rem;letter-spacing:.05em;margin-bottom:.8rem;text-transform:uppercase}
+.focus-card p{color:var(--text-dim);font-size:.9rem;line-height:1.7;font-weight:300}
+
+/* GALLERY */
+.gallery-section{background:var(--bg);overflow:hidden}
+.gallery-row{display:flex;gap:1rem;margin-bottom:1rem;width:max-content}
+.gallery-row.scroll-right{animation:scrollRight 36s linear infinite}
+.gallery-row.scroll-left{animation:scrollLeft 32s linear infinite}
+.gallery-item{flex-shrink:0;width:350px;height:280px;overflow:hidden;position:relative;cursor:pointer;background:var(--bg2)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .6s}
+.gallery-item:hover img{transform:scale(1.1);filter:brightness(1.2)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+@keyframes scrollRight{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes scrollLeft{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+
+/* SCRIMMAGES */
+.scrimmages{background:linear-gradient(135deg,var(--bg2),var(--bg))}
+.scrim-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+.scrim-image{position:relative;border-radius:4px;overflow:hidden}
+.scrim-image img{width:100%;height:auto;display:block}
+.scrim-details{display:flex;flex-direction:column;gap:2rem}
+.scrim-detail{display:flex;align-items:flex-start;gap:1.5rem}
+.scrim-detail-icon{width:50px;height:50px;border:1px solid var(--red);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;color:var(--red)}
+.scrim-detail h4{font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
+.scrim-detail p{color:var(--text-dim);font-size:.9rem;line-height:1.6;font-weight:300}
+
+/* PLAYERS SHOWCASE */
+.players{background:var(--bg)}
+.players-marquee{overflow:hidden;margin-top:3rem;position:relative}
+.players-marquee::before,.players-marquee::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.players-marquee::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.players-marquee::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.players-track{display:flex;gap:1.5rem;animation:marquee 40s linear infinite;width:max-content}
+.player-card{flex-shrink:0;width:280px;height:380px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:all .5s;cursor:pointer;background:var(--bg2)}
+.player-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .3s}
+.player-card:hover img{transform:scale(1.08);filter:brightness(1.1)}
+.player-card:hover{border-color:var(--red);box-shadow:0 0 30px rgba(229,57,53,.2)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* PARALLAX QUOTE */
+.parallax-quote{height:60vh;min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:var(--bg2)}
+.parallax-quote::before{content:'';position:absolute;inset:0;background:url('images/stadium.svg') center/cover no-repeat;opacity:.25;filter:blur(2px)}
+.parallax-quote blockquote{position:relative;z-index:1;font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,5rem);letter-spacing:.05em;line-height:1.2;max-width:900px;padding:0 2rem}
+.parallax-quote blockquote .red{color:var(--red)}
+
+/* PRICING */
+.pricing{background:var(--bg)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:3rem}
+.price-card{border:1px solid rgba(255,255,255,.08);padding:3rem;position:relative;overflow:hidden;transition:all .5s}
+.price-card.featured{border-color:var(--red)}
+.price-card.featured::before{content:'POPULAR';position:absolute;top:20px;right:-30px;background:var(--red);padding:.3rem 2.5rem;font-size:.7rem;letter-spacing:.15em;transform:rotate(45deg)}
+.price-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(229,57,53,.1)}
+.price-label{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--red);line-height:1}
+.price-amount span{font-size:1.2rem;color:var(--text-muted)}
+.price-desc{color:var(--text-dim);font-size:.9rem;margin:1.5rem 0 2rem;line-height:1.7;font-weight:300}
+.price-features{list-style:none;margin-bottom:2.5rem}
+.price-features li{padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.05);color:var(--text-dim);font-size:.9rem;font-weight:300;display:flex;align-items:center;gap:.8rem}
+.price-features li::before{content:'+';color:var(--red);font-weight:700}
+
+/* CONTACT */
+.contact{background:var(--bg2);position:relative;overflow:hidden}
+.contact::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(229,57,53,.05),transparent 70%);pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+.contact-info h3{font-family:'Oswald',sans-serif;font-size:1.5rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2rem}
+.contact-item{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.contact-item-icon{width:45px;height:45px;border:1px solid rgba(229,57,53,.3);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1.1rem}
+.contact-item-text span{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:.2rem}
+.contact-item-text a,.contact-item-text p{color:var(--text-dim);text-decoration:none;font-weight:300;font-size:.95rem}
+.contact-form{display:flex;flex-direction:column;gap:1.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.contact-form input,.contact-form textarea,.contact-form select{background:var(--bg);border:1px solid rgba(255,255,255,.08);padding:1rem 1.2rem;color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;transition:border-color .3s;outline:none;width:100%}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:var(--red)}
+.contact-form textarea{resize:vertical;min-height:120px}
+.contact-form select option{background:var(--bg)}
+.contact-form button{align-self:flex-start}
+
+/* SOCIAL PROOF STRIP */
+.social-strip{padding:3rem 8%;background:var(--bg);display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+.social-stat{text-align:center}
+.social-stat .number{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--red);display:block}
+.social-stat .label{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+
+/* FOOTER */
+footer{background:#050505;padding:4rem 8% 2rem;border-top:1px solid rgba(255,255,255,.05)}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3rem;flex-wrap:wrap;gap:2rem}
+.footer-brand .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--red);letter-spacing:.15em}
+.footer-brand p{color:var(--text-muted);font-size:.85rem;margin-top:.5rem;font-weight:300;max-width:300px;line-height:1.7}
+.footer-links{display:flex;gap:3rem}
+.footer-col h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;margin-bottom:1rem}
+.footer-col a{display:block;color:var(--text-muted);text-decoration:none;font-size:.85rem;padding:.3rem 0;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--red)}
+.footer-social{display:flex;gap:1rem}
+.footer-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none;font-size:.85rem;transition:all .3s}
+.footer-social a:hover{border-color:var(--red);color:var(--red);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{color:var(--text-muted);font-size:.75rem;font-weight:300}
+.footer-bottom span{color:var(--red)}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(10px)}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border:1px solid rgba(255,255,255,.1)}
+.lightbox-close{position:absolute;top:2rem;right:2rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;z-index:10000}
+
+/* FLOATING PARTICLES */
+.particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about,.scrim-content,.contact-grid{grid-template-columns:1fr}
+  .about-image{order:-1}
+  .about-image img{height:440px}
+  .gallery-item{width:280px;height:220px}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none;position:fixed;inset:0;background:rgba(0,0,0,.97);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:999}
+  .nav-links.active{display:flex}
+  .hamburger{display:flex}
+  .nav-cta{display:none}
+  section{padding:clamp(3rem,8vw,6rem) 5%}
+  .hero-content{padding:0 5%}
+  .form-row{grid-template-columns:1fr}
+  .footer-top{flex-direction:column}
+  .footer-links{flex-direction:column;gap:2rem}
+  .cursor,.cursor-dot{display:none}
+  .player-card{width:220px;height:300px}
+  .gallery-item{width:220px;height:180px}
+  .social-strip{gap:2.5rem}
+}
+@media(pointer:coarse){.cursor,.cursor-dot{display:none}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+
+/* MAGNETIC BUTTON EFFECT */
+.magnetic{transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+
+/* 3D TILT */
+.hover-3d{transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+
+/* RED LINE ACCENT */
+.red-line{width:60px;height:3px;background:var(--red);margin:1.5rem 0}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">VELOCITY</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- FLOATING PARTICLES -->
+<canvas class="particles" id="particles"></canvas>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <a href="#" class="nav-logo">VELO<span>CITY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#scrimmages">Scrimmages</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta magnetic">Book Now</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Elite Training Program</div>
+    <h1 class="hero-title">
+      <div class="line"><span class="accent">ACCELERATE</span></div>
+      <div class="line"><span>YOUR <span class="outline">GAME</span></span></div>
+    </h1>
+    <p class="hero-sub">Private and small-group soccer training built on pro-academy methodology. Speed, skill, and game intelligence for players who want more. Train fast. Play faster.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary magnetic">Book a Session</a>
+      <a href="#gallery" class="btn-outline magnetic">See the Work</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS TICKER -->
+<div class="stats-ticker">
+  <div class="ticker-track" id="ticker">
+    <div class="ticker-item"><span class="num">PRO</span> ACADEMY METHODS</div>
+    <div class="ticker-item"><span class="num">$50</span> PER HOUR</div>
+    <div class="ticker-item"><span class="num">ALL</span> AGES & LEVELS</div>
+    <div class="ticker-item"><span class="num">500+</span> SESSIONS COACHED</div>
+    <div class="ticker-item"><span class="num">SPEED</span> & ACCELERATION</div>
+    <div class="ticker-item"><span class="num">WEEKEND</span> SCRIMMAGES</div>
+    <div class="ticker-item"><span class="num">SMALL</span> GROUP SESSIONS</div>
+    <div class="ticker-item"><span class="num">ELITE</span> ENVIRONMENT</div>
+    <div class="ticker-item"><span class="num">PRO</span> ACADEMY METHODS</div>
+    <div class="ticker-item"><span class="num">$50</span> PER HOUR</div>
+    <div class="ticker-item"><span class="num">ALL</span> AGES & LEVELS</div>
+    <div class="ticker-item"><span class="num">500+</span> SESSIONS COACHED</div>
+    <div class="ticker-item"><span class="num">SPEED</span> & ACCELERATION</div>
+    <div class="ticker-item"><span class="num">WEEKEND</span> SCRIMMAGES</div>
+    <div class="ticker-item"><span class="num">SMALL</span> GROUP SESSIONS</div>
+    <div class="ticker-item"><span class="num">ELITE</span> ENVIRONMENT</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="about-image reveal-left">
+      <img src="images/about.svg" alt="Pro-academy training methodology">
+    </div>
+    <div class="about-text reveal-right">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">BUILT BY PLAYERS, <span class="red">FOR PLAYERS</span></h2>
+      <div class="red-line"></div>
+      <p>VELOCITY is a private soccer training program built for serious players. Every session is designed to push athletes beyond their comfort zone with the same methods used inside professional academies.</p>
+      <p>Our coaches have trained and competed at the highest youth levels and bring a player-first perspective to every session, developing not just technical skill but the decision-making and mentality that champions are made of.</p>
+      <p>Every session is built around one philosophy: <strong style="color:var(--red)">Commit. Work. Accelerate. Achieve.</strong></p>
+      <div class="about-credentials">
+        <div class="credential">Pro-Academy Methods</div>
+        <div class="credential">Player-First Coaching</div>
+        <div class="credential">College-Bound Alumni</div>
+        <div class="credential">All Ages & Levels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING FOCUS -->
+<section class="training" id="training">
+  <div class="section-label reveal">Training Focus</div>
+  <h2 class="section-title reveal">DEVELOP. <span class="red">DOMINATE.</span> DIFFERENTIATE.</h2>
+  <div class="red-line reveal"></div>
+  <div class="focus-grid">
+    <div class="focus-card reveal hover-3d">
+      <span class="focus-icon">&#9889;</span>
+      <h3>Speed & Acceleration</h3>
+      <p>Explosive first-step training, sprint mechanics, and agility ladder work designed to leave defenders in the dust.</p>
+    </div>
+    <div class="focus-card reveal hover-3d">
+      <span class="focus-icon">&#9917;</span>
+      <h3>Technical Skills</h3>
+      <p>Ball mastery, close control, passing precision, and finishing drills that build a complete technical foundation.</p>
+    </div>
+    <div class="focus-card reveal hover-3d">
+      <span class="focus-icon">&#129504;</span>
+      <h3>Game IQ & Decision Making</h3>
+      <p>Read the game before it happens. Tactical awareness, positioning, and split-second decision making under pressure.</p>
+    </div>
+    <div class="focus-card reveal hover-3d">
+      <span class="focus-icon">&#128170;</span>
+      <h3>Strength & Agility</h3>
+      <p>Age-appropriate strength conditioning, balance training, and functional movement to prevent injuries and dominate physically.</p>
+    </div>
+    <div class="focus-card reveal hover-3d">
+      <span class="focus-icon">&#127942;</span>
+      <h3>Confidence & Mentality</h3>
+      <p>Build the mental edge that separates good from great. Pressure management, leadership development, and competitive drive.</p>
+    </div>
+    <div class="focus-card reveal hover-3d">
+      <span class="focus-icon">&#127919;</span>
+      <h3>Overall Development</h3>
+      <p>A holistic approach that develops the complete player - technically, tactically, physically, and mentally for every level of competition.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div style="padding:0 0 2rem">
+    <div class="section-label reveal">In Action</div>
+    <h2 class="section-title reveal">TRAIN FAST. <span class="red">PLAY FASTER.</span></h2>
+  </div>
+  <div class="gallery-row scroll-right">
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/strike.svg" alt="Finishing training"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/dribble.svg" alt="Dribbling drills"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/keeper.svg" alt="Goalkeeper training"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/header.svg" alt="Heading practice"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/sprint.svg" alt="Speed work"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/celebrate.svg" alt="Match celebration"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/strike.svg" alt="Finishing training"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/dribble.svg" alt="Dribbling drills"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/keeper.svg" alt="Goalkeeper training"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/header.svg" alt="Heading practice"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/sprint.svg" alt="Speed work"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/celebrate.svg" alt="Match celebration"></div>
+  </div>
+  <div class="gallery-row scroll-left">
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/team.svg" alt="Team unity"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/stadium.svg" alt="Stadium nights"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/drills.svg" alt="Agility drills"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/tactics.svg" alt="Tactical sessions"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/ballglow.svg" alt="Ball mastery"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/pass.svg" alt="Passing patterns"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/team.svg" alt="Team unity"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/stadium.svg" alt="Stadium nights"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/drills.svg" alt="Agility drills"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/tactics.svg" alt="Tactical sessions"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/ballglow.svg" alt="Ball mastery"></div>
+    <div class="gallery-item" onclick="openLightbox(this)"><img src="images/pass.svg" alt="Passing patterns"></div>
+  </div>
+</section>
+
+<!-- PARALLAX QUOTE -->
+<div class="parallax-quote">
+  <blockquote class="reveal">
+    COMMIT. WORK.<br><span class="red">ACCELERATE.</span> ACHIEVE.
+  </blockquote>
+</div>
+
+<!-- SCRIMMAGES -->
+<section class="scrimmages" id="scrimmages">
+  <div class="section-label reveal">Events</div>
+  <h2 class="section-title reveal">WEEKEND <span class="red">SCRIMMAGES</span></h2>
+  <div class="red-line reveal"></div>
+  <div class="scrim-content">
+    <div class="scrim-image reveal-left">
+      <img src="images/scrimmage.svg" alt="Weekend scrimmages poster">
+    </div>
+    <div class="scrim-details reveal-right">
+      <div class="scrim-detail">
+        <div class="scrim-detail-icon">&#128197;</div>
+        <div>
+          <h4>Every Sunday</h4>
+          <p>Four consecutive Sundays each month. High-intensity, game-realistic scrimmages run by our coaching staff.</p>
+        </div>
+      </div>
+      <div class="scrim-detail">
+        <div class="scrim-detail-icon">&#127919;</div>
+        <div>
+          <h4>Invite Only - 10 Limited Spots</h4>
+          <p>Exclusive access. Highly competitive environment. Players are selected to keep every match elite.</p>
+        </div>
+      </div>
+      <div class="scrim-detail">
+        <div class="scrim-detail-icon">&#9917;</div>
+        <div>
+          <h4>Mixed Age Groups</h4>
+          <p>2 hours per session, all players mixed by ability. $100 total for all 4 sessions.</p>
+        </div>
+      </div>
+      <div class="scrim-detail">
+        <div class="scrim-detail-icon">&#128205;</div>
+        <div>
+          <h4>Premier Indoor Facility</h4>
+          <p>Professional-grade turf, full-size goals, and floodlit fields. Message us to secure your spot.</p>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary magnetic" style="margin-top:1rem;display:inline-block;text-align:center">Reserve a Spot</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLAYERS SHOWCASE -->
+<section class="players" id="players">
+  <div class="section-label reveal">The Roster</div>
+  <h2 class="section-title reveal">OUR <span class="red">ATHLETES</span></h2>
+  <div class="red-line reveal"></div>
+  <div class="players-marquee">
+    <div class="players-track">
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-09.svg" alt="Striker"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-07.svg" alt="Winger"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-10.svg" alt="Playmaker"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-04.svg" alt="Defender"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-01.svg" alt="Keeper"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-11.svg" alt="Forward"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-08.svg" alt="Midfield"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-03.svg" alt="Fullback"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-09.svg" alt="Striker"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-07.svg" alt="Winger"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-10.svg" alt="Playmaker"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-04.svg" alt="Defender"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-01.svg" alt="Keeper"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-11.svg" alt="Forward"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-08.svg" alt="Midfield"></div>
+      <div class="player-card" onclick="openLightbox(this)"><img src="images/player-03.svg" alt="Fullback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-label reveal">Investment</div>
+  <h2 class="section-title reveal">TRAIN WITH <span class="red">THE BEST</span></h2>
+  <div class="red-line reveal"></div>
+  <div class="pricing-grid">
+    <div class="price-card reveal hover-3d">
+      <div class="price-label">Private Session</div>
+      <div class="price-amount">$50<span>/hour</span></div>
+      <p class="price-desc">One-on-one personalized training tailored to your specific needs and goals.</p>
+      <ul class="price-features">
+        <li>1-on-1 Focused Coaching</li>
+        <li>Custom Drill Programming</li>
+        <li>Video Analysis Review</li>
+        <li>Flexible Scheduling</li>
+        <li>Progress Tracking</li>
+      </ul>
+      <a href="#contact" class="btn-primary magnetic" style="display:block;text-align:center">Book Now</a>
+    </div>
+    <div class="price-card featured reveal hover-3d">
+      <div class="price-label">Weekend Scrimmages</div>
+      <div class="price-amount">$100<span>/4 sessions</span></div>
+      <p class="price-desc">Four Sunday scrimmages. Competitive matches, elite environment, invite only.</p>
+      <ul class="price-features">
+        <li>4 Sunday Sessions</li>
+        <li>2 Hours Per Session</li>
+        <li>Competitive Match Play</li>
+        <li>Invite Only Access</li>
+        <li>Premier Indoor Facility</li>
+      </ul>
+      <a href="#contact" class="btn-primary magnetic" style="display:block;text-align:center">Reserve a Spot</a>
+    </div>
+    <div class="price-card reveal hover-3d">
+      <div class="price-label">Group Training</div>
+      <div class="price-amount">$35<span>/player</span></div>
+      <p class="price-desc">Small group sessions (3-5 players). Competitive drills and team development.</p>
+      <ul class="price-features">
+        <li>3-5 Player Groups</li>
+        <li>Team Tactical Work</li>
+        <li>Competitive Drills</li>
+        <li>Position-Specific Training</li>
+        <li>Game Simulation</li>
+      </ul>
+      <a href="#contact" class="btn-primary magnetic" style="display:block;text-align:center">Inquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<div class="social-strip">
+  <div class="social-stat reveal">
+    <span class="number" data-target="500" data-suffix="+">0</span>
+    <span class="label">Sessions Coached</span>
+  </div>
+  <div class="social-stat reveal">
+    <span class="number" data-target="120" data-suffix="+">0</span>
+    <span class="label">Athletes Trained</span>
+  </div>
+  <div class="social-stat reveal">
+    <span class="number" data-target="25" data-suffix="+">0</span>
+    <span class="label">Clubs Represented</span>
+  </div>
+  <div class="social-stat reveal">
+    <span class="number" data-target="98" data-suffix="%">0</span>
+    <span class="label">Would Recommend</span>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label reveal">Get Started</div>
+  <h2 class="section-title reveal">BOOK YOUR <span class="red">SESSION</span></h2>
+  <div class="red-line reveal"></div>
+  <div class="contact-grid">
+    <div class="contact-info reveal-left">
+      <h3>Ready to Accelerate?</h3>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#128205;</div>
+        <div class="contact-item-text">
+          <span>Location</span>
+          <p>Premier Indoor Sportsplex, Your City</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#9993;</div>
+        <div class="contact-item-text">
+          <span>Email</span>
+          <a href="mailto:train@velocity-demo.com">train@velocity-demo.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#128222;</div>
+        <div class="contact-item-text">
+          <span>Phone</span>
+          <a href="tel:+15550102030">(555) 010-2030</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#128242;</div>
+        <div class="contact-item-text">
+          <span>Social</span>
+          <a href="#contact">@velocity.training</a>
+        </div>
+      </div>
+      <div style="margin-top:2rem">
+        <a href="mailto:train@velocity-demo.com" class="btn-primary magnetic">Send a Message</a>
+      </div>
+    </div>
+    <form class="contact-form reveal-right" onsubmit="event.preventDefault();alert('Message sent! Our coaching team will get back to you soon.')">
+      <div class="form-row">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+      </div>
+      <div class="form-row">
+        <input type="tel" placeholder="Phone Number">
+        <select>
+          <option value="">Select Interest</option>
+          <option>Private Training ($50/hr)</option>
+          <option>Weekend Scrimmages ($100)</option>
+          <option>Group Training ($35/player)</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Player's Age & Current Team">
+      <textarea placeholder="Tell us about your goals..."></textarea>
+      <button type="submit" class="btn-primary magnetic">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">VELOCITY</div>
+      <p>Elite soccer training for serious players. Develop. Dominate. Differentiate.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About</a>
+        <a href="#training">Training</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <a href="#pricing">Private Sessions</a>
+        <a href="#scrimmages">Weekend Scrimmages</a>
+        <a href="#pricing">Group Training</a>
+        <a href="#contact">Book Now</a>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;margin-bottom:1rem">Follow</h4>
+      <div class="footer-social">
+        <a href="#contact">IG</a>
+        <a href="#contact">YT</a>
+        <a href="#contact">TK</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 <span>VELOCITY</span> Soccer Training. All rights reserved.</p>
+    <p>Train Fast. <span>Play Faster.</span></p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightbox-img" src="" alt="Full view">
+</div>
+
+<script>
+// ==========================================
+// DEVICE DETECTION
+// ==========================================
+const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+// ==========================================
+// LOADER
+// ==========================================
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    animateHero();
+  }, 2200);
+});
+
+// ==========================================
+// CUSTOM CURSOR (pointer devices only)
+// ==========================================
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+if (!isTouch) {
+  let mouseX = 0, mouseY = 0, dotX = 0, dotY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX - 3 + 'px';
+    cursorDot.style.top = mouseY - 3 + 'px';
+  });
+
+  (function animateCursor() {
+    dotX += (mouseX - dotX) * 0.15;
+    dotY += (mouseY - dotY) * 0.15;
+    cursor.style.left = dotX - 10 + 'px';
+    cursor.style.top = dotY - 10 + 'px';
+    requestAnimationFrame(animateCursor);
+  })();
+
+  document.querySelectorAll('a, button, .gallery-item, .player-card, .focus-card, .price-card, .magnetic').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+}
+
+// ==========================================
+// THREE.JS 3D SOCCER BALL (responsive)
+// ==========================================
+const canvas = document.getElementById('hero-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouch ? 1.5 : 2));
+
+const ballGroup = new THREE.Group();
+
+// Main ball
+const ballGeo = new THREE.IcosahedronGeometry(2.2, 1);
+const ballMat = new THREE.MeshPhongMaterial({
+  color: 0x111111,
+  emissive: 0x220000,
+  specular: 0x333333,
+  shininess: 80,
+  transparent: true,
+  opacity: 0.9
+});
+const ball = new THREE.Mesh(ballGeo, ballMat);
+ballGroup.add(ball);
+
+// Wireframe overlay
+const wireMat = new THREE.MeshBasicMaterial({
+  color: 0xE53935,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.3
+});
+const wire = new THREE.Mesh(new THREE.IcosahedronGeometry(2.25, 1), wireMat);
+ballGroup.add(wire);
+
+// Orbiting rings
+const ringMatA = new THREE.MeshBasicMaterial({ color: 0xE53935, transparent: true, opacity: 0.5 });
+const ring = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.02, 16, 100), ringMatA);
+ballGroup.add(ring);
+
+const ringMatB = new THREE.MeshBasicMaterial({ color: 0xE53935, transparent: true, opacity: 0.2 });
+const ring2 = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.015, 16, 100), ringMatB);
+ring2.rotation.x = Math.PI / 3;
+ballGroup.add(ring2);
+
+const ringMatC = new THREE.MeshBasicMaterial({ color: 0xE53935, transparent: true, opacity: 0.1 });
+const ring3 = new THREE.Mesh(new THREE.TorusGeometry(4, 0.01, 16, 100), ringMatC);
+ring3.rotation.x = -Math.PI / 4;
+ring3.rotation.y = Math.PI / 6;
+ballGroup.add(ring3);
+
+// Floating particles around ball (lighter on touch devices)
+const particlesGeo = new THREE.BufferGeometry();
+const particleCount = isTouch ? 110 : 200;
+const positions = new Float32Array(particleCount * 3);
+for (let i = 0; i < particleCount; i++) {
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.random() * Math.PI;
+  const r = 3 + Math.random() * 4;
+  positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+  positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+  positions[i * 3 + 2] = r * Math.cos(phi);
+}
+particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const particlesMat = new THREE.PointsMaterial({
+  color: 0xE53935,
+  size: 0.03,
+  transparent: true,
+  opacity: 0.6,
+  blending: THREE.AdditiveBlending
+});
+const particles3D = new THREE.Points(particlesGeo, particlesMat);
+ballGroup.add(particles3D);
+
+scene.add(ballGroup);
+
+// Lights
+scene.add(new THREE.AmbientLight(0x333333, 1));
+const pointLight = new THREE.PointLight(0xE53935, 2, 20);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+const pointLight2 = new THREE.PointLight(0x4444ff, 0.5, 20);
+pointLight2.position.set(-5, -3, 3);
+scene.add(pointLight2);
+const spotLight = new THREE.SpotLight(0xffffff, 0.5);
+spotLight.position.set(0, 10, 5);
+scene.add(spotLight);
+
+camera.position.z = 10;
+
+// Responsive layout: reposition/rescale the ball per viewport so it
+// reads on phones (centered above the title) through desktops (right side)
+const BALL = { x: 5, y: 0, s: 1 };
+function layoutBall() {
+  const w = window.innerWidth;
+  if (w < 600)       { BALL.x = 0;   BALL.y = 2.6; BALL.s = 0.55; }
+  else if (w < 900)  { BALL.x = 2.6; BALL.y = 0.8; BALL.s = 0.72; }
+  else if (w < 1280) { BALL.x = 3.8; BALL.y = 0;   BALL.s = 0.85; }
+  else               { BALL.x = 5;   BALL.y = 0;   BALL.s = 1; }
+  ballGroup.scale.set(BALL.s, BALL.s, BALL.s);
+  // Keep hero text readable when the ball sits behind it on small screens
+  const dim = w < 600;
+  ballMat.opacity = dim ? 0.55 : 0.9;
+  wireMat.opacity = dim ? 0.18 : 0.3;
+  particlesMat.opacity = dim ? 0.35 : 0.6;
+  ringMatA.opacity = dim ? 0.3 : 0.5;
+}
+layoutBall();
+
+// Mouse interaction (auto-drift on touch devices)
+let targetRotX = 0, targetRotY = 0;
+if (!isTouch) {
+  document.addEventListener('mousemove', (e) => {
+    targetRotX = (e.clientY / window.innerHeight - 0.5) * 0.5;
+    targetRotY = (e.clientX / window.innerWidth - 0.5) * 0.5;
+  });
+}
+
+let scrollProgress = 0;
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  ball.rotation.x += 0.003;
+  ball.rotation.y += 0.005;
+  wire.rotation.x += 0.003;
+  wire.rotation.y += 0.005;
+
+  ring.rotation.z += 0.01;
+  ring2.rotation.z -= 0.008;
+  ring3.rotation.z += 0.005;
+  ring3.rotation.x += 0.003;
+
+  particles3D.rotation.y += 0.002;
+  particles3D.rotation.x += 0.001;
+
+  if (isTouch) {
+    targetRotY = Math.sin(Date.now() * 0.0004) * 0.35;
+    targetRotX = Math.cos(Date.now() * 0.0003) * 0.2;
+  }
+  ballGroup.rotation.x += (targetRotX - ballGroup.rotation.x) * 0.05;
+  ballGroup.rotation.y += (targetRotY - ballGroup.rotation.y) * 0.05;
+
+  // Floating + scroll-driven drift off the layout base position
+  ballGroup.position.x = BALL.x + scrollProgress * 3;
+  ballGroup.position.y = BALL.y + Math.sin(Date.now() * 0.001) * 0.3 - scrollProgress * 5;
+  ballGroup.rotation.z = scrollProgress * Math.PI;
+
+  const pulse = 1 + Math.sin(Date.now() * 0.003) * 0.02;
+  ball.scale.set(pulse, pulse, pulse);
+
+  pointLight.position.x = Math.sin(Date.now() * 0.002) * 5;
+  pointLight.position.y = Math.cos(Date.now() * 0.002) * 5;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// ==========================================
+// BACKGROUND PARTICLES (adaptive count)
+// ==========================================
+const particleCanvas = document.getElementById('particles');
+const pCtx = particleCanvas.getContext('2d');
+particleCanvas.width = window.innerWidth;
+particleCanvas.height = window.innerHeight;
+
+const BG_COUNT = window.innerWidth < 768 ? 25 : 60;
+const bgParticles = [];
+for (let i = 0; i < BG_COUNT; i++) {
+  bgParticles.push({
+    x: Math.random() * particleCanvas.width,
+    y: Math.random() * particleCanvas.height,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    size: Math.random() * 2 + 0.5,
+    opacity: Math.random() * 0.3 + 0.1
+  });
+}
+
+function drawParticles() {
+  pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+  bgParticles.forEach((p, i) => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0) p.x = particleCanvas.width;
+    if (p.x > particleCanvas.width) p.x = 0;
+    if (p.y < 0) p.y = particleCanvas.height;
+    if (p.y > particleCanvas.height) p.y = 0;
+
+    pCtx.beginPath();
+    pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    pCtx.fillStyle = `rgba(229, 57, 53, ${p.opacity})`;
+    pCtx.fill();
+
+    bgParticles.forEach((p2, j) => {
+      if (i === j) return;
+      const dx = p.x - p2.x;
+      const dy = p.y - p2.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        pCtx.beginPath();
+        pCtx.moveTo(p.x, p.y);
+        pCtx.lineTo(p2.x, p2.y);
+        pCtx.strokeStyle = `rgba(229, 57, 53, ${0.05 * (1 - dist / 150)})`;
+        pCtx.lineWidth = 0.5;
+        pCtx.stroke();
+      }
+    });
+  });
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ==========================================
+// HERO TEXT ANIMATION
+// ==========================================
+function animateHero() {
+  gsap.to('.hero-title .line span', {
+    y: 0,
+    duration: 1.2,
+    stagger: 0.15,
+    ease: 'power4.out'
+  });
+  gsap.from('.hero-badge', { opacity: 0, y: 20, duration: 0.8, delay: 0.5 });
+  gsap.from('.hero-sub', { opacity: 0, y: 30, duration: 0.8, delay: 0.8 });
+  gsap.from('.hero-buttons', { opacity: 0, y: 30, duration: 0.8, delay: 1 });
+  gsap.from('.hero-scroll', { opacity: 0, y: 20, duration: 0.8, delay: 1.5 });
+}
+
+// ==========================================
+// SCROLL ANIMATIONS
+// ==========================================
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('active');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+// 3D ball scroll-out as the hero leaves the viewport
+ScrollTrigger.create({
+  trigger: '.hero',
+  start: 'top top',
+  end: 'bottom top',
+  scrub: 1,
+  onUpdate: (self) => { scrollProgress = self.progress; }
+});
+
+// Counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-target'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          el.textContent = target + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current);
+        }
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.number').forEach(c => counterObserver.observe(c));
+
+// ==========================================
+// 3D TILT + MAGNETIC (pointer devices only)
+// ==========================================
+if (!isTouch) {
+  document.querySelectorAll('.hover-3d').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = (y - rect.height / 2) / (rect.height / 2) * -8;
+      const rotateY = (x - rect.width / 2) / (rect.width / 2) * 8;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+  });
+
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0, 0)';
+    });
+  });
+}
+
+// ==========================================
+// HAMBURGER MENU
+// ==========================================
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+  });
+});
+
+// ==========================================
+// LIGHTBOX
+// ==========================================
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// ==========================================
+// RESIZE / ORIENTATION HANDLER
+// ==========================================
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  particleCanvas.width = window.innerWidth;
+  particleCanvas.height = window.innerHeight;
+  layoutBall();
+});
+window.addEventListener('orientationchange', () => setTimeout(layoutBall, 300));
+
+// ==========================================
+// SMOOTH SCROLL
+// ==========================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>

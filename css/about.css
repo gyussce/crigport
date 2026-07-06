@@ -1,0 +1,37 @@
+/* ═══════════════════ CRIG® — about ═══════════════════ */
+.about { padding: clamp(6rem, 14vh, 10rem) 0; background: linear-gradient(var(--bg) 0%, var(--bg-2) 40%, var(--bg) 100%); }
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 6vw, 5rem); padding: 0 clamp(1rem, 5vw, 4rem); align-items: center; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+.about-photos { position: relative; height: clamp(420px, 60vh, 620px); perspective: 1200px; }
+.pcard {
+  position: absolute; top: 50%; left: 50%;
+  width: clamp(180px, 24vw, 280px);
+  background: #17171f; padding: 10px 10px 2.4rem;
+  border: 1px solid var(--line); border-radius: 6px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+  transition: box-shadow 0.3s;
+  will-change: transform;
+}
+.pcard img { border-radius: 3px; aspect-ratio: 3 / 4; object-fit: cover; }
+.pcard figcaption { position: absolute; bottom: 0.7rem; left: 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-dim); }
+.pcard:hover { box-shadow: 0 40px 90px rgba(124, 92, 255, 0.25); }
+
+.about-lede { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.35; margin-bottom: 1.6rem; }
+.about-body { color: var(--ink-dim); line-height: 1.75; font-weight: 300; font-size: clamp(0.95rem, 1.6vw, 1.1rem); }
+[data-words] .w { display: inline-block; opacity: 0.12; }
+.about-stats { list-style: none; display: flex; gap: clamp(1.5rem, 4vw, 3rem); margin-top: 2.5rem; }
+.about-stats b { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.4rem); color: var(--acid); font-variant-numeric: tabular-nums; }
+.about-stats span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--ink-dim); }
+
+/* ═══ MOBILE ═══ */
+@media (max-width: 560px) {
+  .about-photos { height: 400px; }
+  .pcard { width: 44vw; }
+}
+
+/* ═══ REDUCED MOTION ═══ */
+@media (prefers-reduced-motion: reduce) {
+  [data-words] .w { opacity: 1; }
+}

@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Midwest Paint Pros Inc — Painting in Aurora, IL</title>
+  <meta name="description" content="Midwest Paint Pros Inc. Interior and exterior painting, drywall repair, staining, and more in Aurora, IL. 18 five-star Google reviews. Call (630) 962-0700 for a free estimate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HousePainter",
+    "name": "Midwest Paint Pros Inc",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "930 Pennsylvania Ave",
+      "addressLocality": "Aurora",
+      "addressRegion": "IL",
+      "postalCode": "60506"
+    },
+    "telephone": "+1-630-962-0700",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "18"
+    },
+    "openingHours": "Mo-Sa 08:00-20:00",
+    "areaServed": "Aurora, IL and surrounding areas"
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: #0f1d3a;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 0 0 6px 6px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 200;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid #0f1d3a;
+      outline-offset: 2px;
+    }
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      border-color: #0f1d3a;
+      box-shadow: 0 0 0 1px #0f1d3a;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: #0f1d3a;
+      color: #94a3b8;
+      font-size: 13px;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    .topbar a {
+      color: #facc15;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* NAV */
+    .nav {
+      border-bottom: 1px solid #e2e8f0;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      font-size: 20px;
+      text-decoration: none;
+      color: #0f1d3a;
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #64748b;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: #0f1d3a; }
+    .nav-phone {
+      background: #0f1d3a;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+    }
+    .nav-phone:hover { background: #1a2d52 !important; }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle svg { width: 24px; height: 24px; color: #0f1d3a; }
+
+    /* HERO */
+    .hero {
+      background: #0f1d3a;
+      border-bottom: none;
+    }
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px 72px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 44px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      color: #94a3b8;
+      max-width: 480px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-accent {
+      background: #facc15;
+      color: #0f1d3a;
+    }
+    .btn-accent:hover { background: #eab308; }
+    .btn-outline {
+      background: transparent;
+      color: #cbd5e1;
+      border: 1.5px solid #334155;
+    }
+    .btn-outline:hover { border-color: #94a3b8; color: #fff; }
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .hero-rating strong { color: #fff; }
+    .stars { color: #facc15; letter-spacing: 2px; }
+    .hero-card {
+      background: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 32px;
+    }
+    .hero-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: #0f1d3a;
+    }
+    .hero-card > p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 20px;
+    }
+    .hero-card .form-group {
+      margin-bottom: 12px;
+    }
+    .hero-card .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .hero-card .form-group input,
+    .hero-card .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #0f1d3a;
+      background: #f8fafc;
+    }
+    .hero-card .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #0f1d3a;
+      color: #facc15;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 4px;
+    }
+    .hero-card .btn-submit:hover { background: #1a2d52; }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .section-warm { background: #f8fafc; }
+    .section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 6px;
+      color: #0f1d3a;
+      letter-spacing: -0.3px;
+    }
+    .section-desc {
+      color: #64748b;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ca8a04;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service-item {
+      padding: 28px 24px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .service-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #0f1d3a;
+    }
+    .service-item p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.55;
+    }
+    .services-cta {
+      margin-top: 32px;
+      font-size: 15px;
+      color: #64748b;
+    }
+    .services-cta a {
+      color: #0f1d3a;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #facc15;
+      padding-bottom: 1px;
+    }
+    .services-cta a:hover { color: #1a2d52; }
+
+    /* REVIEWS */
+    .reviews-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .reviews-header h2 { margin-bottom: 0; }
+    .reviews-meta {
+      font-size: 14px;
+      color: #64748b;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .review {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 28px;
+      background: #fff;
+      border-left: 3px solid #facc15;
+    }
+    .review-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .review-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #0f1d3a;
+    }
+    .review-date {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .review-stars {
+      color: #ca8a04;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .review-text {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.7;
+    }
+    .review-service {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* ABOUT */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-sidebar {
+      background: #0f1d3a;
+      border: none;
+      border-radius: 10px;
+      padding: 32px;
+    }
+    .about-sidebar dl {
+      display: grid;
+      gap: 20px;
+    }
+    .about-sidebar dt {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #facc15;
+      margin-bottom: 2px;
+    }
+    .about-sidebar dd {
+      font-size: 15px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .contact-info h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: #0f1d3a;
+    }
+    .contact-intro {
+      font-size: 15px;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .contact-detail {
+      margin-bottom: 24px;
+    }
+    .contact-detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .contact-detail-value {
+      font-size: 16px;
+      color: #0f1d3a;
+      font-weight: 500;
+    }
+    .contact-detail-value a {
+      text-decoration: none;
+      color: #0f1d3a;
+      border-bottom: 2px solid #facc15;
+      padding-bottom: 1px;
+    }
+    .contact-detail-value a:hover { color: #1a2d52; }
+
+    .contact-form {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 36px;
+      background: #f8fafc;
+    }
+    .contact-form h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 24px;
+      color: #0f1d3a;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #0f1d3a;
+      background: #fff;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .form-submit { margin-top: 8px; }
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: #0f1d3a;
+      color: #facc15;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-submit:hover { background: #1a2d52; }
+    .btn-submit:disabled { opacity: 0.6; cursor: default; }
+
+    /* FOOTER */
+    .footer {
+      background: #0a1628;
+      color: #94a3b8;
+      padding: 48px 24px 36px;
+    }
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #1e293b;
+      margin-bottom: 24px;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .footer-brand-sub {
+      font-size: 13px;
+      color: #64748b;
+    }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-links a:hover { color: #facc15; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12px;
+      color: #475569;
+    }
+    .footer-bottom a { color: #64748b; text-decoration: none; }
+    .footer-bottom a:hover { color: #facc15; }
+
+    /* MOBILE CTA */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: #fff;
+      border-top: 1px solid #e2e8f0;
+      padding: 12px 20px;
+    }
+    .mobile-cta-inner {
+      display: flex;
+      gap: 10px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .mobile-cta a {
+      flex: 1;
+      text-align: center;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .mobile-cta-call {
+      background: #0f1d3a;
+      color: #facc15;
+    }
+    .mobile-cta-estimate {
+      background: #facc15;
+      color: #0f1d3a;
+    }
+
+    /* MOBILE */
+    @media (max-width: 740px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 20px 24px;
+        border-bottom: 1px solid #e2e8f0;
+        gap: 16px;
+      }
+      .nav-toggle { display: block; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 40px;
+        gap: 32px;
+      }
+      .hero h1 { font-size: 32px; }
+      .hero-card { order: 2; }
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .about-layout { grid-template-columns: 1fr; gap: 32px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { text-align: center; }
+      .footer-top { flex-direction: column; align-items: center; }
+      .footer-bottom { flex-direction: column; align-items: center; }
+      .mobile-cta { display: block; }
+      body { padding-bottom: 72px; }
+      .topbar { font-size: 12px; padding: 8px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <div class="topbar">
+    Serving Aurora, IL &amp; surrounding areas &mdash; <a href="tel:6309620700">Call (630) 962-0700</a> for a free estimate
+  </div>
+
+  <nav class="nav" role="navigation" aria-label="Main">
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Midwest Paint Pros</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="tel:6309620700" class="nav-phone">(630) 962-0700</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Painting done right, at a fair price.</h1>
+          <p class="hero-desc">We're a small crew based in Aurora, IL, led by Esteban. We do interior and exterior painting, drywall repair, staining, and more. We show up on time, prep everything properly, and clean up when we're done.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-accent">Get a free estimate</a>
+            <a href="tel:6309620700" class="btn btn-outline">Call (630) 962-0700</a>
+          </div>
+          <div class="hero-rating" aria-label="Rated 5.0 out of 5 from 18 Google reviews">
+            <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <strong>5.0</strong> from 18 Google reviews
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Quick estimate</h3>
+          <p>Tell us what you need — we'll call you back.</p>
+          <form id="quickForm" novalidate>
+            <div class="form-group">
+              <label for="qName">Name</label>
+              <input type="text" id="qName" name="name" required autocomplete="name" aria-required="true">
+            </div>
+            <div class="form-group">
+              <label for="qPhone">Phone</label>
+              <input type="tel" id="qPhone" name="phone" required autocomplete="tel" aria-required="true">
+            </div>
+            <div class="form-group">
+              <label for="qService">Service</label>
+              <select id="qService" name="service">
+                <option value="">Pick one</option>
+                <option>Interior painting</option>
+                <option>Exterior painting</option>
+                <option>Cabinet painting</option>
+                <option>Drywall repair</option>
+                <option>Wood staining</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit">Request a call back</button>
+            <div id="quickFormStatus" role="status" aria-live="polite" style="margin-top:8px;font-size:13px"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-label="Services">
+      <span class="section-label">Services</span>
+      <h2>What we do</h2>
+      <p class="section-desc">Here's the full list. If you don't see what you need, just call — we can probably help.</p>
+      <div class="services-grid" role="list">
+        <div class="service-item" role="listitem">
+          <h3>Interior Painting</h3>
+          <p>Walls, ceilings, closets, basements. We tape, prime, and paint.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Exterior Painting</h3>
+          <p>Siding, trim, porches. Includes power washing and scraping.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Cabinet Painting</h3>
+          <p>Kitchen and bathroom cabinets. New look without the renovation cost.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Drywall Repair</h3>
+          <p>Nail pops, cracks, water damage, holes. Mudding and finishing included.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Door Painting</h3>
+          <p>Interior and exterior doors. Front doors, garage doors, closet doors.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Wood Staining</h3>
+          <p>Fences, decks, pergolas, trim. We seal and stain.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Spray Painting</h3>
+          <p>For larger surfaces or when a smoother finish is needed.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Furniture Painting</h3>
+          <p>Tables, chairs, shelves, dressers — if it can be painted, we'll do it.</p>
+        </div>
+        <div class="service-item" role="listitem">
+          <h3>Custom &amp; Other</h3>
+          <p>Wallpaper, water damage repair, specialty finishes. Just ask.</p>
+        </div>
+      </div>
+      <p class="services-cta">Need something done? <a href="#contact">Get a free estimate</a> or call <a href="tel:6309620700">(630) 962-0700</a>.</p>
+    </section>
+
+    <div class="section-warm">
+      <section class="section" id="reviews" aria-label="Customer reviews">
+        <div class="reviews-header">
+          <div>
+            <span class="section-label">Reviews</span>
+            <h2>What people say</h2>
+          </div>
+          <span class="reviews-meta">All from Google &middot; 18 reviews &middot; 5.0 avg</span>
+        </div>
+        <div class="reviews-grid">
+
+          <article class="review">
+            <div class="review-top">
+              <span class="review-name">Rachel Lee</span>
+              <time class="review-date" datetime="2026-05">May 2026</time>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">They've just finished painting the exterior of my whole house. They did a fantastic job from power washing, scraping, staining, then painting. The crews are polite, punctual, and professional. My house looks like new again. Will definitely hire them again.</p>
+            <div class="review-service">Exterior painting</div>
+          </article>
+
+          <article class="review">
+            <div class="review-top">
+              <span class="review-name">Steve Baustian</span>
+              <time class="review-date" datetime="2026-01">Jan 2026</time>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">They did a very good job painting interior walls for us. We will use them again for any future painting needs. The owner, Esteban, is a very personable, polite young man. Very impressed!</p>
+            <div class="review-service">Custom painting</div>
+          </article>
+
+          <article class="review">
+            <div class="review-top">
+              <span class="review-name">Robert Nagel</span>
+              <time class="review-date" datetime="2025-08">Aug 2025</time>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">We had several rooms painted including repairing nail pops on a very high ceiling, re-taping corners, and drywall repair from water damage. Esteban's crew arrived on time, worked quietly and efficiently. All the rooms look amazing.</p>
+            <div class="review-service">Interior painting</div>
+          </article>
+
+          <article class="review">
+            <div class="review-top">
+              <span class="review-name">Roy Ramos</span>
+              <time class="review-date" datetime="2025-10">Oct 2025</time>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">Top-tier work for a reasonable price without sacrificing quality or attention to detail. They finished our garage — mudding, trim work, and paint — and everything came out better than we imagined.</p>
+            <div class="review-service">Door, Interior, Exterior painting &middot; Drywall repair</div>
+          </article>
+
+          <article class="review">
+            <div class="review-top">
+              <span class="review-name">Marcie Martin</span>
+              <time class="review-date" datetime="2025-10">Oct 2025</time>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">Esteban and his partner wallpapered a very tricky wall in my home. The wall has many cut outs and a wooden beam they had to navigate around. They did the job perfectly. Won't hesitate to call again.</p>
+          </article>
+
+          <article class="review">
+            <div class="review-top">
+              <span class="review-name">Sara St. Clair</span>
+              <time class="review-date" datetime="2025">2025</time>
+            </div>
+            <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p class="review-text">Very efficient, quick and great attention to detail. Communication was great throughout the whole project. We had extensive interior and exterior painting done and all is perfect. Will continue to use these guys.</p>
+          </article>
+
+        </div>
+      </section>
+    </div>
+
+    <section class="section" id="about" aria-label="About us">
+      <span class="section-label">About</span>
+      <h2>A little about us</h2>
+      <div class="about-layout">
+        <div class="about-text">
+          <p>Midwest Paint Pros is run by Esteban out of Aurora, Illinois. We're a small painting company — not a franchise, not a chain. Esteban is on every job, either doing the work himself or supervising the crew.</p>
+          <p>We've painted bedrooms, living rooms, kitchens, basements, garages, entire house exteriors, fences, pergolas, cabinets, and a lot of drywall repair in between. Most of our work comes from referrals, and every one of our 18 Google reviews is 5 stars.</p>
+          <p>We give free estimates, show up when we say we will, and clean up when we're done.</p>
+        </div>
+        <aside class="about-sidebar">
+          <dl>
+            <div>
+              <dt>Based in</dt>
+              <dd>Aurora, IL</dd>
+            </div>
+            <div>
+              <dt>Owner</dt>
+              <dd>Esteban</dd>
+            </div>
+            <div>
+              <dt>Google reviews</dt>
+              <dd>18, all five stars</dd>
+            </div>
+            <div>
+              <dt>Estimates</dt>
+              <dd>Always free</dd>
+            </div>
+            <div>
+              <dt>Hours</dt>
+              <dd>Mon – Sat, until 8 PM</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <div class="section-warm">
+      <section class="section" id="contact" aria-label="Contact">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-label">Contact</span>
+            <h2>Get in touch</h2>
+            <p class="contact-intro">Want an estimate? Have a question? Call us or fill out the form. We usually get back to people the same day.</p>
+            <div class="contact-detail">
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value"><a href="tel:6309620700">(630) 962-0700</a></div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-label">Address</div>
+              <address class="contact-detail-value" style="font-style:normal">930 Pennsylvania Ave<br>Aurora, IL 60506</address>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-label">Hours</div>
+              <div class="contact-detail-value">Monday – Saturday, until 8 PM</div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Request a free estimate</h3>
+            <form id="estimateForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="name" name="name" required autocomplete="name" aria-required="true">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="tel" id="phone" name="phone" autocomplete="tel">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email <span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="service">What do you need done?</label>
+                <select id="service" name="service">
+                  <option value="">Pick one</option>
+                  <option>Interior painting</option>
+                  <option>Exterior painting</option>
+                  <option>Cabinet painting</option>
+                  <option>Door painting</option>
+                  <option>Drywall repair</option>
+                  <option>Wood staining</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="details">Details</label>
+                <textarea id="details" name="details" placeholder="Number of rooms, what needs painting, timeline, etc."></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn-submit">Send request</button>
+              </div>
+              <div id="formStatus" role="status" aria-live="polite" style="margin-top:10px;font-size:14px"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">Midwest Paint Pros</div>
+          <div class="footer-brand-sub">Painting in Aurora, IL since day one.</div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Midwest Paint Pros Inc</span>
+        <span>930 Pennsylvania Ave, Aurora, IL 60506 &middot; <a href="tel:6309620700">(630) 962-0700</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Quick actions">
+    <div class="mobile-cta-inner">
+      <a href="tel:6309620700" class="mobile-cta-call">Call now</a>
+      <a href="#contact" class="mobile-cta-estimate">Free estimate</a>
+    </div>
+  </div>
+
+  <script>
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    toggle.addEventListener('click', function() {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+
+    function handleForm(formId, statusId) {
+      document.getElementById(formId).addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = e.target;
+        var btn = form.querySelector('.btn-submit');
+        var status = document.getElementById(statusId);
+        var required = form.querySelectorAll('[required]');
+        for (var i = 0; i < required.length; i++) {
+          if (!required[i].value.trim() || !required[i].validity.valid) {
+            required[i].focus();
+            return;
+          }
+        }
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        setTimeout(function() {
+          btn.textContent = 'Send request';
+          btn.disabled = false;
+          status.textContent = 'Sent. We’ll get back to you soon.';
+          status.style.color = '#166534';
+          form.reset();
+          setTimeout(function() { status.textContent = ''; }, 5000);
+        }, 1200);
+      });
+    }
+    handleForm('quickForm', 'quickFormStatus');
+    handleForm('estimateForm', 'formStatus');
+  </script>
+
+</body>
+</html>

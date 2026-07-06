@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glow Beauty Studio | Beauty That Feels Personal</title>
+  <meta name="description" content="Glow Beauty Studio — a modern beauty website demo built for salons, beauty studios, and local beauty entrepreneurs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><span class="logo-dot"></span>Glow Beauty Studio</a>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn-book">Book Now</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-close" id="mobileClose" aria-label="Close">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-book">Book Now</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-home">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="hero-orb hero-orb-3"></div>
+      <div class="hero-orb hero-orb-4"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content" data-animate="fade-up">
+        <div class="hero-badge"><span class="pulse"></span>Demo website for salons, beauty brands &amp; beauty professionals</div>
+        <h1>Beauty That<br>Feels <span class="line-accent"><em>Personal</em></span></h1>
+        <p class="hero-subtitle">A modern beauty website demo built for salons, beauty studios, and local beauty entrepreneurs who want more bookings, better trust, and a stronger online presence.</p>
+        <div class="hero-buttons">
+          <a href="contact.html" class="btn-hero-primary">Book an Appointment <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="services.html" class="btn-hero-secondary">View Services</a>
+        </div>
+      </div>
+      <div class="hero-visual" data-animate="fade-left" style="transition-delay:0.2s;">
+        <div class="hero-card-stack">
+          <div class="hero-card hero-card-main">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Beauty / Salon Image</span>
+          </div>
+          <div class="hero-card hero-card-accent-1" style="border-radius:20px;">
+            <div class="mini-stat">500+</div><div class="mini-label">Happy Clients</div>
+          </div>
+          <div class="hero-card hero-card-accent-2" style="border-radius:20px;">
+            <div class="mini-stat">4.9 &#9733;</div><div class="mini-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Hair Styling</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Braids &amp; Protective Styles</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Lash Extensions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Nails &amp; Manicures</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Makeup Artistry</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Beauty Products</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Consultations</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Special Events</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Hair Styling</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Braids &amp; Protective Styles</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Lash Extensions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Nails &amp; Manicures</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Makeup Artistry</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Beauty Products</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Consultations</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Special Events</span>
+    </div>
+  </div>
+
+  <!-- VALUE -->
+  <section class="value-section">
+    <div class="container">
+      <div class="value-header">
+        <div data-animate="fade-up">
+          <span class="section-tag">Why You Need a Website</span>
+          <h2 class="section-title">Make Your Beauty Business<br><strong>Easier to Book</strong></h2>
+        </div>
+        <div data-animate="fade-up" style="transition-delay:0.1s;">
+          <p class="section-desc">Give your clients one clean, professional place to see your services, pricing, gallery, and booking info.</p>
+        </div>
+      </div>
+      <div class="value-grid">
+        <div class="value-card" data-animate="fade-up" style="transition-delay:0.05s;">
+          <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--pink-dark)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <h3>Online Booking Made Simple</h3>
+          <p>Clients can view availability and request appointments directly from your website instead of DMs and missed calls.</p>
+        </div>
+        <div class="value-card" data-animate="fade-up" style="transition-delay:0.12s;">
+          <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7BA7C9" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <h3>Services &amp; Pricing in One Place</h3>
+          <p>No more answering the same questions. Your site clearly shows what you offer, what it costs, and what to expect.</p>
+        </div>
+        <div class="value-card" data-animate="fade-up" style="transition-delay:0.19s;">
+          <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DB87D" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <h3>Gallery That Showcases Your Work</h3>
+          <p>Turn your best photos into a professional portfolio that helps new clients trust your skills before they book.</p>
+        </div>
+        <div class="value-card" data-animate="fade-up" style="transition-delay:0.26s;">
+          <div class="value-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3>Professional Look for New Clients</h3>
+          <p>A polished website builds instant credibility and makes your business look established even if you work solo.</p>
+        </div>
+      </div>
+      <div class="value-callout" data-animate="fade-up">
+        <p>"Your Instagram may show your work, but your website gives clients one clean place to view services, pricing, policies, and booking information."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-header" data-animate="fade-up">
+        <span class="section-tag">What We Offer</span>
+        <h2 class="section-title">Our <em>Services</em></h2>
+        <p class="section-desc centered">From cuts and color to lashes and nails, explore a range of beauty services tailored to you.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-animate="fade-up" style="transition-delay:0.05s;">
+          <div class="service-img" style="background:linear-gradient(135deg, var(--pink-light), var(--pink));">&#9986;</div>
+          <div class="service-body"><h3>Hair Styling</h3><p>From cuts and color to blowouts and styling, we create looks that match your unique personality.</p><a href="services.html" class="service-link">Learn More &rarr;</a></div>
+        </div>
+        <div class="service-card" data-animate="fade-up" style="transition-delay:0.12s;">
+          <div class="service-img" style="background:linear-gradient(135deg, var(--blue-light), var(--blue));">&#10047;</div>
+          <div class="service-body"><h3>Braids &amp; Protective Styles</h3><p>Expert braiding including box braids, knotless braids, twists, locs, and custom protective styles.</p><a href="services.html" class="service-link">Learn More &rarr;</a></div>
+        </div>
+        <div class="service-card" data-animate="fade-up" style="transition-delay:0.19s;">
+          <div class="service-img" style="background:linear-gradient(135deg, var(--green-light), var(--green));">&#10024;</div>
+          <div class="service-body"><h3>Lash Services</h3><p>Classic, volume, and hybrid lash extensions that enhance your natural beauty every morning.</p><a href="services.html" class="service-link">Learn More &rarr;</a></div>
+        </div>
+        <div class="service-card" data-animate="fade-up" style="transition-delay:0.26s;">
+          <div class="service-img" style="background:linear-gradient(135deg, var(--yellow-light), var(--yellow));">&#128133;</div>
+          <div class="service-body"><h3>Nails &amp; Manicures</h3><p>Gel, acrylic, press-on, and natural nail care in a relaxing setting.</p><a href="services.html" class="service-link">Learn More &rarr;</a></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:48px;" data-animate="fade-up">
+        <a href="services.html" class="btn-hero-secondary">View All Services &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonials-header" data-animate="fade-up">
+        <span class="section-tag">Client Love</span>
+        <h2 class="section-title">What Clients Are <em>Saying</em></h2>
+        <p class="section-desc centered">Real results start with a professional presence. Here's what a website can do for your business.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-animate="fade-up" style="transition-delay:0.05s;">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"The website made my salon look so much more professional. Clients can finally find my services and booking info in one place instead of scrolling through my Instagram."</blockquote>
+          <div class="testimonial-author"><div class="testimonial-avatar">A</div><div><div class="testimonial-name">Aisha M.</div><div class="testimonial-role">Salon Owner</div></div></div>
+          <span class="testimonial-demo-tag">Sample Testimonial</span>
+        </div>
+        <div class="testimonial-card" data-animate="fade-up" style="transition-delay:0.12s;">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"I used to lose bookings because people couldn't find my hours or pricing. Now my website does the talking for me, and I'm booked out two weeks in advance."</blockquote>
+          <div class="testimonial-author"><div class="testimonial-avatar">T</div><div><div class="testimonial-name">Tanya R.</div><div class="testimonial-role">Lash Technician</div></div></div>
+          <span class="testimonial-demo-tag">Sample Testimonial</span>
+        </div>
+        <div class="testimonial-card" data-animate="fade-up" style="transition-delay:0.19s;">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Having a real website gave me the confidence to raise my prices. It shows clients I'm serious about my craft and worth the investment."</blockquote>
+          <div class="testimonial-author"><div class="testimonial-avatar">J</div><div><div class="testimonial-name">Jasmine K.</div><div class="testimonial-role">Braider &amp; Stylist</div></div></div>
+          <span class="testimonial-demo-tag">Sample Testimonial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER CTA -->
+  <section class="offer-section">
+    <div class="container">
+      <div class="offer-grid">
+        <div class="offer-content" data-animate="fade-right">
+          <span class="section-tag">For Beauty Business Owners</span>
+          <h2 class="section-title">Want a Website Like This for Your <em>Beauty Business?</em></h2>
+          <p>For $800, I can customize a site like this with your logo, photos, services, prices, contact information, and booking links. Everything you need to look professional online and get more bookings.</p>
+          <div class="offer-price-tag"><span class="offer-price-num">$800</span><span class="offer-price-label">custom beauty website</span></div>
+          <a href="contact.html" class="btn-offer">Request a Website Demo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="offer-features-card" data-animate="fade-left">
+          <h3>What's Included</h3>
+          <ul class="offer-features">
+            <li><span class="offer-check">&#10003;</span>Modern website design</li>
+            <li><span class="offer-check">&#10003;</span>Mobile-friendly layout</li>
+            <li><span class="offer-check">&#10003;</span>Services and pricing sections</li>
+            <li><span class="offer-check">&#10003;</span>Gallery / portfolio section</li>
+            <li><span class="offer-check">&#10003;</span>Contact or booking form</li>
+            <li><span class="offer-check">&#10003;</span>Basic SEO setup</li>
+            <li><span class="offer-check">&#10003;</span>Social media links</li>
+            <li><span class="offer-check">&#10003;</span>Click-to-call buttons</li>
+            <li><span class="offer-check">&#10003;</span>One round of revisions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-dot"></span>Glow Beauty Studio</a>
+          <p>A demo website concept for beauty businesses. Clean, modern, and ready to customize for your salon, studio, or beauty brand.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Services</h4><a href="services.html">Hair Styling</a><a href="services.html">Braids &amp; Styles</a><a href="services.html">Lash Services</a><a href="services.html">Nails</a><a href="services.html">Makeup</a><a href="services.html">Products</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="#">Phone: Coming Soon</a><a href="#">Email: Coming Soon</a><a href="#">Location: Your City, IL</a><a href="contact.html" style="color:var(--pink-light);font-weight:600;margin-top:8px;">Book Now &rarr;</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Glow Beauty Studio. All Rights Reserved.</p>
+        <div class="footer-demo-note">This is a demo website concept. Business name, photos, services, pricing, and booking links can be customized.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

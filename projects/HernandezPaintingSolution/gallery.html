@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Perfect Place Remodeling Inc.</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left"><span>&#9742;</span><a href="tel:+12245513643">Make a call: 224.551.3643</a></div>
+      <div class="top-bar-right">
+        <a href="mailto:ppremodeling25@gmail.com" class="top-bar-email">ppremodeling25@gmail.com</a>
+        <div class="social-icons"><a href="#">&#9726;</a><a href="https://instagram.com/ppremodeling25"><a href="#">&#9733;</a>#9733;</a><a href="#">&#9654;</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-icon">PP</div>
+        <div class="nav-logo-text"><strong>Perfect Place Remodeling</strong><span>Fully Insured &amp; Bonded</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Our Services &#9662;</a>
+          <div class="dropdown-menu">
+            <a href="services.html#painting">Painting &amp; Drywall</a><a href="services.html#plumbing">Plumbing</a>
+            <a href="services.html#tile">Flooring &amp; Tile</a><a href="services.html#electrical">Electrical</a><a href="services.html#kitchen">Kitchen &amp; Bath Remodel</a><a href="services.html#carpentry">Carpentry</a><a href="services.html#deck">Deck Installation</a>
+          </div>
+        </li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="nav-estimate">Get An Estimate</a></li>
+      </ul>
+      <button class="hamburger" onclick="openMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div class="nav-logo-text"><strong>Perfect Place Remodeling</strong><span>Fully Insured &amp; Bonded</span></div>
+      <button class="mobile-close" onclick="closeMobile()">&times;</button>
+    </div>
+    <div class="mobile-nav">
+      <a href="index.html">Home</a><a href="services.html">Our Services</a><a href="gallery.html">Gallery</a>
+      <a href="testimonials.html">Testimonials</a><a href="about.html">About Us</a><a href="faq.html">FAQ</a>
+      <a href="contact.html" class="btn-red">Get An Estimate</a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('project-1.png')"></div>
+    <div class="page-hero-content">
+      <h1>Our Gallery</h1>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Gallery</div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Portfolio</div>
+        <h2 class="section-title">See Our Work In Action</h2>
+        <p class="section-desc">Browse through our completed projects across the Chicago area. Click any image to view it larger.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card tall" onclick="openLightbox(this)">
+          <img src="project-6.png" alt="Staircase renovation with modern railing" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Modern Staircase</h4><span>Full Renovation, Chicago</span></div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox(this)">
+          <img src="project-1.png" alt="Herringbone tile flooring" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Herringbone Tile</h4><span>Basement Floor</span></div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox(this)">
+          <img src="project-3.png" alt="Interior painting dark hardwood" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Interior Painting</h4><span>Bedroom Finish</span></div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox(this)">
+          <img src="project-5.png" alt="Stairwell with lighting" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Stairwell Lighting</h4><span>Paint &amp; Electrical</span></div>
+        </div>
+        <div class="gallery-card wide" onclick="openLightbox(this)">
+          <img src="project-2.png" alt="Basement renovation" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Basement Renovation</h4><span>Full Remodel</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:3rem;"></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card" onclick="openLightbox(this)">
+          <img src="project-4.png" alt="Painted room" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Room Remodel</h4><span>Paint &amp; Flooring</span></div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox(this)">
+          <img src="project-7.png" alt="Basement herringbone tile" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Basement Tile</h4><span>Herringbone Pattern</span></div>
+        </div>
+        <div class="gallery-card tall" onclick="openLightbox(this)">
+          <img src="project-5.png" alt="Stairwell from above" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Modern Stairwell</h4><span>Paint &amp; Design</span></div>
+        </div>
+        <div class="gallery-card wide" onclick="openLightbox(this)">
+          <img src="project-6.png" alt="Entryway renovation" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Entryway Renovation</h4><span>Complete Remodel</span></div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox(this)">
+          <img src="project-2.png" alt="Basement space" loading="lazy">
+          <div class="gallery-card-overlay"><h4>Open Basement</h4><span>Drywall &amp; Paint</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg" style="background-image:url('project-3.png')"></div>
+    <div class="container">
+      <div class="cta-banner-content">
+        <h2>Like What You See?</h2>
+        <p>Let us do the same for your home. Request a free estimate and let's get started on your project.</p>
+        <a href="contact.html" class="btn-red">Get A Free Estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="nav-logo-text"><strong>Perfect Place Remodeling</strong><span>Fully Insured &amp; Bonded</span></div>
+          <p>Professional painting and renovation services for homes across Chicago and the surrounding suburbs.</p>
+          <div class="social-icons"><a href="#">&#9726;</a><a href="https://instagram.com/ppremodeling25"><a href="#">&#9733;</a>#9733;</a><a href="#">&#9654;</a></div>
+        </div>
+        <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html#painting">Painting</a></li><li><a href="services.html#drywall">Drywall</a></li><li><a href="services.html#tile">Tile &amp; Flooring</a></li><li><a href="services.html#framing">Framing</a></li><li><a href="services.html#plumbing">Plumbing</a></li><li><a href="services.html#carpentry">Carpentry</a></li><li><a href="services.html#kitchen">Kitchen &amp; Bath</a></li><li><a href="services.html#demolition">Demolition</a></li><li><a href="services.html#electrical">Electrical</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="testimonials.html">Testimonials</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Contact Us</h4>
+          <div class="footer-contact-row"><div class="fc-icon">&#9742;</div><a href="tel:+12245513643">224.551.3643</a></div>
+          <div class="footer-contact-row"><div class="fc-icon">&#9993;</div><a href="mailto:ppremodeling25@gmail.com">ppremodeling25@gmail.com</a></div>
+          <div class="footer-contact-row"><div class="fc-icon">&#9873;</div><span>Chicago, IL &amp; Suburbs</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Perfect Place Remodeling Inc.. All rights reserved.</p>
+        <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms</a><a href="faq.html">FAQ</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close">&times;</button>
+    <img src="" alt="Project photo">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

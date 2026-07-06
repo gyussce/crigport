@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Stories — Marcus Cole IUL</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Marcus Cole <span>| IUL</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How IUL Works</a></li>
+        <li><a href="reviews.html" class="active">Client Stories</a></li>
+      </ul>
+      <a href="index.html#contact" class="nav-cta">Free Consultation</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1>Client Stories</h1>
+      <p>Real feedback from real policyholders. Some have been with me for years; some are just getting started.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-label">340+ families served since 2013</div>
+    <h2>What People Actually Say</h2>
+    <p class="section-desc">I asked clients if they'd share their experience. These are their words, lightly edited for length. No incentives were offered.</p>
+
+    <div class="review-grid" id="reviewGrid">
+      <!-- Populated by reviews-data.js -->
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark">
+    <div class="section-inner text-center">
+      <h2 style="color: var(--cream);">Want to See If IUL Fits Your Situation?</h2>
+      <p style="color: rgba(248,246,243,0.7); max-width: 460px; margin: 0 auto 28px;">No pitch, no pressure. I'll run your numbers and give you an honest answer.</p>
+      <a href="index.html#contact" class="btn btn-gold">Book a Free 20-Min Call</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Marcus Cole <span>| IUL</span></div>
+        <p class="footer-tagline">Helping Chicagoland families build tax-free retirement income through Indexed Universal Life insurance.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How IUL Works</a></li>
+        <li><a href="reviews.html">Client Stories</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Marcus Cole, Licensed Insurance Broker. Not affiliated with any government agency. Insurance products are not FDIC insured, not bank guaranteed, and may lose value. This site is for informational purposes only and does not constitute financial advice. IL License #17284653.</p>
+    </div>
+  </footer>
+
+  <script src="reviews-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function renderReviews() {
+      const grid = document.getElementById('reviewGrid');
+      if (!grid || typeof reviewsData === 'undefined') return;
+
+      grid.innerHTML = reviewsData.map(function(r) {
+        const stars = '&#9733;'.repeat(r.stars) + '&#9734;'.repeat(5 - r.stars);
+        return '<div class="review-card fade-in">' +
+          '<div class="review-stars">' + stars + '</div>' +
+          '<p class="review-text">"' + r.text + '"</p>' +
+          '<div class="review-author">' + r.name + '</div>' +
+          '<div class="review-meta">' +
+            'Client since ' + r.since + ' &middot; ' + r.location +
+          '</div>' +
+          '<div class="review-meta" style="margin-top: 6px; font-style: italic;">' +
+            r.context +
+          '</div>' +
+        '</div>';
+      }).join('');
+
+      setTimeout(initFadeIn, 100);
+    }
+
+    renderReviews();
+  </script>
+</body>
+</html>

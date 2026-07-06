@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "paintpros",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "--directory", "/Users/ganiuyussuf/Downloads/PaintPros"],
+      "port": 8090,
+      "autoPort": true
+    }
+  ]
+}

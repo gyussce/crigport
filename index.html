@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0b0b10" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b10'/%3E%3Ctext x='32' y='44' font-family='Arial Black,sans-serif' font-size='34' font-weight='900' text-anchor='middle' fill='%23c8ff3d'%3EC%3C/text%3E%3C/svg%3E" />
+<title>Ganiu Yussuf — Creative Developer & Designer</title>
+<meta name="description" content="Portfolio of Ganiu Yussuf — creative developer building bold websites for real businesses." />
+<meta property="og:title" content="Ganiu Yussuf — Creative Developer & Designer" />
+<meta property="og:description" content="Bold, hand-coded websites for real businesses. Zero templates. Ever." />
+<meta property="og:image" content="assets/portrait_suit.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Space+Grotesk:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/hero.css" />
+<link rel="stylesheet" href="css/about.css" />
+<link rel="stylesheet" href="css/work.css" />
+<link rel="stylesheet" href="css/contact.css" />
+</head>
+<body>
+
+<!-- ══════════ PRELOADER ══════════ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-name" aria-hidden="true">
+    <span>C</span><span>R</span><span>I</span><span>G</span>
+  </div>
+  <div class="preloader-count" id="preCount">0</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill" id="preBar"></div></div>
+</div>
+
+<!-- ══════════ FIXED LAYERS ══════════ -->
+<canvas id="gl" class="gl-canvas"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="topbar">
+  <a class="logo" href="#top">CRIG<sup>®</sup></a>
+  <nav class="topnav">
+    <a href="#about" data-cursor="→">About</a>
+    <a href="#work" data-cursor="→">Work</a>
+    <a href="#contact" data-cursor="→">Contact</a>
+  </nav>
+  <div class="topbar-meta"><span class="dot"></span>Available for work</div>
+</header>
+
+<main id="top">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <img class="hero-fallback" id="heroFallback" src="assets/hero_head.jpg" alt="Ganiu Yussuf" />
+    <div class="hero-inner">
+      <p class="hero-eyebrow reveal-line">Creative developer — Champaign / Chicago, IL</p>
+      <h1 class="hero-title" aria-label="Ganiu Yussuf">
+        <span class="hero-line" data-split>GANIU</span>
+        <span class="hero-line hero-line--offset" data-split>YUSSUF</span>
+      </h1>
+      <p class="hero-sub reveal-line">I turn small businesses into <em>unforgettable</em> websites.<br/>Hand-coded. Zero templates. Ever.</p>
+    </div>
+    <div class="hero-hint"><span class="hero-hint-wheel"></span>Scroll to disintegrate</div>
+    <div class="hero-index">01 / INTRO</div>
+  </section>
+
+  <!-- marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>DESIGN — DEVELOP — DEPLOY — REPEAT&nbsp;—&nbsp;</span><span>DESIGN — DEVELOP — DEPLOY — REPEAT&nbsp;—&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <section class="about" id="about">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title" data-split>THE HUMAN<br/>BEHIND IT</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photos" id="photoStack">
+        <figure class="pcard" data-speed="0.9"><img src="assets/photo_selfie.jpg" alt="Ganiu — daylight selfie" /><figcaption>on site</figcaption></figure>
+        <figure class="pcard" data-speed="1.15"><img src="assets/photo_palm.jpg" alt="Ganiu under palm trees at night" /><figcaption>after hours</figcaption></figure>
+      </div>
+      <div class="about-copy">
+        <p class="about-lede" data-words>I'm Ganiu — an engineering student at the University of Illinois who builds real websites for real businesses: painters, daycares, restaurants, coaches, and everyone in between.</p>
+        <p class="about-body" data-words>Every project on this page started as a conversation and ended as a live site. I handle the whole stack — design, copy, code, launch — so owners can get back to running their business.</p>
+        <ul class="about-stats">
+          <li><b data-count="4">0</b><span>products shipped</span></li>
+          <li><b data-count="4">0</b><span>industries served</span></li>
+          <li><b data-count="100">0</b><span>% hand-coded</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WORK ══════════ -->
+  <section class="work" id="work">
+    <div class="work-pin">
+      <div class="work-track" id="workTrack">
+        <header class="work-intro">
+          <span class="section-num">03</span>
+          <h2 class="section-title">SELECTED<br/>WORK</h2>
+          <p class="work-intro-sub">Ten builds for ten businesses.<br/>Drag through time →</p>
+        </header>
+        <!-- cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- marquee -->
+  <div class="marquee marquee--reverse" aria-hidden="true">
+    <div class="marquee-track">
+      <span>PAINTERS — DAYCARES — RESTAURANTS — COACHES — SALONS — LAUNDRY — INSURANCE&nbsp;—&nbsp;</span><span>PAINTERS — DAYCARES — RESTAURANTS — COACHES — SALONS — LAUNDRY — INSURANCE&nbsp;—&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <section class="contact" id="contact">
+    <canvas class="strands" id="strands" aria-hidden="true"></canvas>
+    <span class="section-num">04</span>
+    <p class="contact-kicker">for curious people &amp; serious businesses.</p>
+    <h2 class="contact-title" data-split>LET'S<br/>BUILD</h2>
+    <a class="contact-btn" id="magnet" href="mailto:poz4gan@gmail.com" data-cursor="✉">
+      <span class="contact-btn-inner">poz4gan@gmail.com</span>
+    </a>
+    <footer class="footer">
+      <span>© <span id="year">2026</span> Ganiu “Crig” Yussuf</span>
+      <span id="clock">--:--</span>
+      <span>Made from scratch. Obviously.</span>
+    </footer>
+  </section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }</script>
+<script type="module" src="js/main.js"></script>
+<script>
+  // Fallback: if the JS modules never boot (opened via file://, CDN unreachable, or a
+  // script error), unhide everything so the site still reads as a normal page.
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      if (!window.__crigBoot) document.documentElement.classList.add("no-fx");
+    }, 2500);
+  });
+</script>
+</body>
+</html>
