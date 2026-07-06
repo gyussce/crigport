@@ -18,6 +18,13 @@
 .pcard figcaption { position: absolute; bottom: 0.7rem; left: 12px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-dim); }
 .pcard:hover { box-shadow: 0 40px 90px rgba(124, 92, 255, 0.25); }
 
+/* single-portrait variant: larger, even polaroid border (no caption slot) */
+.about-photos--single .pcard { width: clamp(240px, 30vw, 340px); padding: 12px; }
+.about-photos--single .pcard::after {
+  content: ""; position: absolute; inset: 0; border-radius: 6px;
+  box-shadow: inset 0 0 60px rgba(124, 92, 255, 0.12); pointer-events: none;
+}
+
 .about-lede { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.35; margin-bottom: 1.6rem; }
 .about-body { color: var(--ink-dim); line-height: 1.75; font-weight: 300; font-size: clamp(0.95rem, 1.6vw, 1.1rem); }
 [data-words] .w { display: inline-block; opacity: 0.12; }
@@ -29,6 +36,7 @@
 @media (max-width: 560px) {
   .about-photos { height: 400px; }
   .pcard { width: 44vw; }
+  .about-photos--single .pcard { width: 62vw; }
 }
 
 /* ═══ REDUCED MOTION ═══ */

@@ -9,5 +9,5 @@ export const PROJECTS = [
   { title: "Tiny Steps Daycare", tag: "Childcare", year: "2026", href: "projects/NolanSteps/index.html", img: "assets/proj_daycare.jpg", accent: "#7cd9ff", big: "STEPS" },
   { title: "Ashley's Laundry Service", tag: "Local Service", year: "2026", href: "projects/ScottLaundry/index.html", img: "assets/proj_laundry.jpg", accent: "#6fffc2", big: "FRESH" },
   { title: "Lagos Grill & Lounge", tag: "Restaurant", year: "2026", href: "projects/LagosLounge/index.html", img: "assets/proj_lagos.jpg", accent: "#ffb443", big: "CHOP" },
-  { title: "Juan Handy", tag: "Home Services — Brand", year: "2026", href: null, img: "assets/proj_juan.jpg", accent: "#ffe14d", big: "FIX IT" },
+  { title: "Handy Plus", tag: "Home Services", year: "2026", href: "https://handyplus.us/", img: "assets/proj_juan.jpg", accent: "#ffe14d", big: "FIX IT" },
 ];

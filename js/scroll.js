@@ -79,21 +79,17 @@ export function initReveals() {
 
 export function initPhotoFan() {
   const cards = gsap.utils.toArray("#photoStack .pcard");
-  if (reduced) {
-    gsap.set(cards[0], { xPercent: -115, yPercent: -50, rotate: -7 });
-    gsap.set(cards[1], { xPercent: 15, yPercent: -50, rotate: 6 });
-    return;
-  }
+  if (!cards.length) return;
   gsap.set(cards, { xPercent: -50, yPercent: -50 });
-  const tl = gsap.timeline({
-    scrollTrigger: { trigger: "#about", start: "top 75%", end: "center center", scrub: 1 },
+  if (reduced) return;
+  // single portrait: rise + settle from a slight tilt, then a gentle scroll parallax
+  gsap.from(cards[0], {
+    yPercent: -30, rotate: -6, scale: 0.9, opacity: 0, filter: "blur(6px)",
+    ease: "power3.out",
+    scrollTrigger: { trigger: "#about", start: "top 78%", end: "center center", scrub: 1 },
   });
-  tl.to(cards[0], { xPercent: -115, rotate: -8, yPercent: -54 }, 0)
-    .to(cards[1], { xPercent: 15, rotate: 7, yPercent: -47 }, 0);
-  cards.forEach((card) => {
-    gsap.to(card, {
-      y: () => -60 * (parseFloat(card.dataset.speed) - 1) * 4,
-      scrollTrigger: { trigger: "#about", start: "top bottom", end: "bottom top", scrub: 1.2 },
-    });
+  gsap.to(cards[0], {
+    yPercent: -68, ease: "none",
+    scrollTrigger: { trigger: "#about", start: "top bottom", end: "bottom top", scrub: 1.2 },
   });
 }
