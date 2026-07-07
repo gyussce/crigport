@@ -52,6 +52,7 @@ a.card { cursor: none; }
 @media (max-width: 560px) {
   .work-intro { width: 78vw; }
   .card { width: min(78vw, 340px); }
+  .card-big { font-size: clamp(2.4rem, 12vw, 3.2rem); letter-spacing: -0.04em; }
   .work-outro { width: 80vw; }
 }
 

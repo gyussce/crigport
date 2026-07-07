@@ -13,7 +13,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scrollbar-width: thin; scrollbar-color: var(--violet) var(--bg); }
+html { scrollbar-width: thin; scrollbar-color: var(--violet) var(--bg); overflow-x: hidden; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 
@@ -147,7 +147,13 @@ section { position: relative; z-index: 2; }
 .section-title .ch { display: inline-block; transform: translateY(110%) rotate(6deg); }
 
 /* ═══ MARQUEE ═══ */
-.marquee { position: relative; z-index: 2; overflow: hidden; padding: 1.2rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(11, 11, 16, 0.65); backdrop-filter: blur(4px); }
+.marquee {
+  position: relative; z-index: 2; overflow: hidden; overflow: clip;
+  contain: layout paint;
+  max-width: 100%;
+  padding: 1.2rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: rgba(11, 11, 16, 0.65); backdrop-filter: blur(4px);
+}
 .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
 .marquee--reverse .marquee-track { animation-direction: reverse; }
 .marquee-track span {
@@ -175,6 +181,10 @@ section { position: relative; z-index: 2; }
     font-size: clamp(2.15rem, 10.5vw, 3.25rem);
     line-height: 0.98;
   }
+}
+
+@media (max-width: 380px) {
+  .section-title { font-size: clamp(1.95rem, 9.5vw, 2.75rem); }
 }
 
 @media (max-height: 620px) and (min-width: 760px) {
