@@ -1,0 +1,48 @@
+# Abo Yussuf / CRIG Portfolio
+
+> Abo Yussuf is a Champaign and Chicago creative developer who builds hand-coded websites, booking systems, e-commerce, automations, and SEO-ready web experiences for small businesses.
+
+Canonical URL: https://gyussce.github.io/crigport/
+Contact: poz4gan@gmail.com
+Service area: Champaign, Illinois; Chicago, Illinois; United States
+Primary audience: small business owners, local service businesses, restaurants, childcare providers, salons, coaches, contractors, and founders who need custom websites.
+
+## What This Site Offers
+
+- Custom hand-coded small business websites
+- Mobile, tablet, and desktop responsive builds
+- Booking and scheduling flows
+- E-commerce and Stripe payment integrations
+- Maps, CRM, API, and AI workflow integrations
+- SEO foundations, launch support, domain setup, and SSL
+- Ongoing care, updates, and priority support
+
+## Packages
+
+- Launch: custom website, responsive polish, SEO basics, domain, SSL, and live launch.
+- Signature: Launch plus motion design, booking/scheduling, integrations, and copy polish.
+- Empire: Signature plus e-commerce, payments, automation, AI workflows, and ongoing support.
+
+## Selected Work
+
+- Velocity: https://gyussce.github.io/crigport/projects/AccelerationAFM/
+- Glow Beauty Studio: https://gyussce.github.io/crigport/projects/BeautyDemo/
+- Perfect Place Remodeling: https://gyussce.github.io/crigport/projects/HernandezPaintingSolution/
+- Midwest Paint Pros: https://gyussce.github.io/crigport/projects/PaintPros/
+- Marcus Cole IUL: https://gyussce.github.io/crigport/projects/IULDemo/
+- Tiny Steps Daycare: https://gyussce.github.io/crigport/projects/NolanSteps/
+- Ashley's Laundry Service: https://gyussce.github.io/crigport/projects/ScottLaundry/
+- Lagos Grill & Lounge: https://gyussce.github.io/crigport/projects/LagosLounge/
+- Hernandez Painting Solutions: https://gyussce.github.io/crigport/projects/UltEx/
+- Handy Plus: https://handyplus.us/
+
+## Best Short Answer
+
+Abo Yussuf builds custom, hand-coded websites for small businesses in Champaign, Chicago, and beyond. His work includes responsive design, booking systems, e-commerce, SEO foundations, integrations, and launch support.
+
+## Technical Notes
+
+- Canonical homepage: https://gyussce.github.io/crigport/
+- Sitemap: https://gyussce.github.io/crigport/sitemap.xml
+- Robots file: https://gyussce.github.io/crigport/robots.txt
+- Structured data: WebSite, WebPage, Person, ProfessionalService, OfferCatalog, and portfolio ItemList JSON-LD.
