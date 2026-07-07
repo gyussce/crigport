@@ -95,8 +95,33 @@ export function initProgress() {
 
 export function initClock() {
   const el = document.getElementById("clock");
+  const avail = document.getElementById("availClock");
   const fmt = new Intl.DateTimeFormat("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "America/Chicago" });
-  const tickC = () => (el.textContent = fmt.format(new Date()) + " CHI");
+  const fmtShort = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago" });
+  const tickC = () => {
+    const now = new Date();
+    if (el) el.textContent = fmt.format(now) + " CHI";
+    if (avail) avail.textContent = fmtShort.format(now);
+  };
   tickC(); setInterval(tickC, 1000);
   document.getElementById("year").textContent = new Date().getFullYear();
+}
+
+/* floating bubblegum bubbles — ambient, passive */
+export function initBubbles() {
+  const wrap = document.getElementById("bubbles");
+  if (!wrap || reduced) return;
+  const N = 16;
+  for (let i = 0; i < N; i++) {
+    const b = document.createElement("span");
+    b.className = "bubble";
+    const size = 18 + Math.random() * 72;
+    b.style.width = b.style.height = size + "px";
+    b.style.left = Math.random() * 100 + "%";
+    const dur = 14 + Math.random() * 16;
+    b.style.animationDuration = dur + "s";
+    b.style.animationDelay = -Math.random() * dur + "s";
+    b.style.setProperty("--drift", Math.random() * 90 - 45 + "px");
+    wrap.appendChild(b);
+  }
 }

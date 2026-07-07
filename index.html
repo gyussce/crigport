@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/about.css" />
 <link rel="stylesheet" href="css/work.css" />
 <link rel="stylesheet" href="css/contact.css" />
+<link rel="stylesheet" href="css/booking.css" />
 </head>
 <body>
 
@@ -117,12 +118,23 @@
   <!-- ══════════ CONTACT ══════════ -->
   <section class="contact" id="contact">
     <canvas class="strands" id="strands" aria-hidden="true"></canvas>
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
     <span class="section-num">04</span>
+    <div class="avail-chip">
+      <span class="avail-dot"></span>
+      Booking new projects · <span id="availClock">--:--</span> in Chicago
+    </div>
     <p class="contact-kicker">for curious people &amp; serious businesses.</p>
     <h2 class="contact-title" data-split>LET'S<br/>BUILD</h2>
-    <a class="contact-btn" id="magnet" href="mailto:poz4gan@gmail.com" data-cursor="✉">
-      <span class="contact-btn-inner">poz4gan@gmail.com</span>
-    </a>
+    <p class="contact-pitch">A free 30-minute call — I'll map out what your site needs and exactly what it costs. No pressure, no jargon.</p>
+    <div class="contact-cta">
+      <button class="contact-btn contact-btn--primary" id="bookBtn" data-cursor="book">
+        <span class="contact-btn-inner">Book a free consultation</span>
+      </button>
+      <a class="contact-btn contact-btn--ghost" id="magnet" href="mailto:poz4gan@gmail.com" data-cursor="✉">
+        <span class="contact-btn-inner">or just email me ↗</span>
+      </a>
+    </div>
     <footer class="footer">
       <span>© <span id="year">2026</span> Abo Yussuf — CRIG co-founder</span>
       <span id="clock">--:--</span>
@@ -131,6 +143,65 @@
   </section>
 
 </main>
+
+<!-- ══════════ BOOKING MODAL ══════════ -->
+<div class="booking" id="booking" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" hidden>
+  <div class="booking-backdrop" data-close></div>
+  <div class="booking-panel" role="document">
+    <button class="booking-close" data-close aria-label="Close booking">✕</button>
+    <div class="booking-aside">
+      <span class="booking-brand">CRIG®</span>
+      <h3 id="bookingTitle" class="booking-heading">Free<br/>consultation</h3>
+      <ul class="booking-facts">
+        <li><span class="bf-ic">◷</span> 30 minutes</li>
+        <li><span class="bf-ic">◉</span> Google Meet or phone</li>
+        <li><span class="bf-ic">▦</span> Chicago time (CT)</li>
+      </ul>
+      <p class="booking-note">Pick a slot that works — I'll confirm by email within a day.</p>
+    </div>
+    <div class="booking-main">
+      <!-- STEP 1: pick date + time -->
+      <div class="booking-step" data-step="1">
+        <div class="booking-cal">
+          <div class="cal-head">
+            <button class="cal-nav" id="calPrev" aria-label="Previous month">‹</button>
+            <span class="cal-month" id="calMonth">—</span>
+            <button class="cal-nav" id="calNext" aria-label="Next month">›</button>
+          </div>
+          <div class="cal-dow"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+        <div class="booking-slots">
+          <p class="slots-label" id="slotsLabel">Select a day →</p>
+          <div class="slots-grid" id="slotsGrid"></div>
+        </div>
+      </div>
+      <!-- STEP 2: details -->
+      <div class="booking-step" data-step="2" hidden>
+        <button class="booking-back" id="detailsBack">‹ change time</button>
+        <p class="booking-when" id="bookingWhen">—</p>
+        <form class="booking-form" id="bookingForm" novalidate>
+          <label>Your name<input type="text" id="bkName" required autocomplete="name" /></label>
+          <label>Email<input type="email" id="bkEmail" required autocomplete="email" /></label>
+          <label>What are you building? <span class="opt">(optional)</span><textarea id="bkMsg" rows="3" placeholder="e.g. a site for my painting business"></textarea></label>
+          <button type="submit" class="booking-submit">Request this time</button>
+        </form>
+      </div>
+      <!-- STEP 3: confirmation -->
+      <div class="booking-step booking-done" data-step="3" hidden>
+        <div class="done-mark">✓</div>
+        <h4>Almost there, <span id="doneName">friend</span>!</h4>
+        <p id="doneWhen" class="booking-when">—</p>
+        <p class="done-copy">Your email app just opened with the request pre-filled — hit send and I'll confirm. Want it on your calendar now?</p>
+        <div class="done-actions">
+          <a class="done-btn" id="gcalLink" target="_blank" rel="noopener">Add to Google Calendar</a>
+          <a class="done-btn done-btn--ghost" id="icsLink" download="crig-consultation.ics">Download .ics</a>
+        </div>
+        <button class="booking-back" id="doneClose">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
