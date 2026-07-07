@@ -10,7 +10,7 @@
     var(--bg);
 }
 .caps-lede {
-  max-width: 60ch; margin: 0 auto clamp(2.5rem, 6vh, 4rem); text-align: center;
+  max-width: 58ch; margin: 0 auto clamp(2.5rem, 6vh, 4rem); text-align: center;
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(1.2rem, 2.6vw, 1.9rem); line-height: 1.35;
 }
@@ -24,7 +24,9 @@
 }
 .tier {
   position: relative; display: flex; flex-direction: column;
-  padding: 2rem 1.7rem; border: 1px solid var(--line); border-radius: 18px;
+  min-width: 0;
+  padding: clamp(1.45rem, 2.4vw, 2rem) clamp(1.2rem, 2vw, 1.7rem);
+  border: 1px solid var(--line); border-radius: 18px;
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s;
 }
@@ -72,7 +74,7 @@
 /* CTAs — the featured one pops (Von Restorff) */
 .tier-cta {
   margin-top: auto; cursor: none; width: 100%;
-  padding: 0.95rem 1rem; border-radius: 99px;
+  min-height: 44px; padding: 0.95rem 1rem; border-radius: 99px;
   font-family: var(--font-body); font-weight: 600; font-size: 0.98rem; letter-spacing: 0.01em;
   transition: transform 0.25s, box-shadow 0.3s, background 0.3s, color 0.3s;
 }
@@ -127,6 +129,25 @@
 @media (max-width: 900px) {
   .tiers { grid-template-columns: 1fr; max-width: 460px; }
   .tier--featured { order: -1; }
+}
+
+@media (max-width: 560px) {
+  .caps { padding: 5rem 1rem; }
+  .caps .section-head { padding-inline: 0; }
+  .caps-lede { text-align: left; font-size: clamp(1.15rem, 7vw, 1.55rem); }
+  .tiers { max-width: none; }
+  .proof { justify-content: flex-start; text-align: left; }
+  .proof-list { justify-content: flex-start; gap: 0.5rem 1rem; }
+  .caps-stack { justify-content: flex-start; }
+  .caps-stack ul { justify-content: flex-start; }
+  .caps-outro { text-align: left; }
+}
+
+@media (max-height: 620px) and (min-width: 760px) {
+  .caps { padding-block: clamp(4.5rem, 10vh, 7rem); }
+  .caps-lede { font-size: clamp(1.15rem, 2.1vw, 1.55rem); margin-bottom: 2rem; }
+  .tiers { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tier-list li { font-size: 0.86rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

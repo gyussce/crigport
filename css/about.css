@@ -1,11 +1,16 @@
 /* ═══════════════════ CRIG® — about ═══════════════════ */
 .about { padding: clamp(6rem, 14vh, 10rem) 0; background: linear-gradient(var(--bg) 0%, var(--bg-2) 40%, var(--bg) 100%); }
-.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 6vw, 5rem); padding: 0 clamp(1rem, 5vw, 4rem); align-items: center; }
+.about-grid {
+  width: min(100%, 1440px);
+  display: grid; grid-template-columns: minmax(280px, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem); padding: 0 clamp(1rem, 5vw, 4rem);
+  margin: 0 auto; align-items: center;
+}
 @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
 
-.about-photos { position: relative; height: clamp(420px, 60vh, 620px); perspective: 1200px; }
+.about-photos { position: relative; min-height: clamp(380px, 56vh, 600px); perspective: 1200px; }
 .pcard {
-  position: absolute; top: 50%; left: 50%;
+  position: absolute; top: 54%; left: 50%;
   width: clamp(180px, 24vw, 280px);
   background: #17171f; padding: 10px 10px 2.4rem;
   border: 1px solid var(--line); border-radius: 6px;
@@ -25,6 +30,7 @@
   box-shadow: inset 0 0 60px rgba(255, 84, 200, 0.16); pointer-events: none;
 }
 
+.about-copy { max-width: 62ch; }
 .about-lede { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.9rem); line-height: 1.35; margin-bottom: 1.6rem; }
 .about-body { color: var(--ink-dim); line-height: 1.75; font-weight: 300; font-size: clamp(0.95rem, 1.6vw, 1.1rem); }
 [data-words] .w { display: inline-block; opacity: 0.12; }
@@ -34,9 +40,28 @@
 
 /* ═══ MOBILE ═══ */
 @media (max-width: 560px) {
-  .about-photos { height: 400px; }
+  .about { padding-block: 5rem; }
+  .about-photos { min-height: 340px; order: 2; }
+  .about-copy { order: 1; }
   .pcard { width: 44vw; }
-  .about-photos--single .pcard { width: 62vw; }
+  .about-photos--single .pcard { width: min(72vw, 280px); }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .about-stats span { font-size: 0.64rem; letter-spacing: 0.12em; }
+}
+
+@media (max-width: 380px) {
+  .about-stats { grid-template-columns: 1fr; }
+}
+
+@media (max-height: 620px) and (min-width: 760px) {
+  .about { padding-block: clamp(4.5rem, 10vh, 7rem); }
+  .about-photos { min-height: 330px; }
+  .about-photos--single .pcard { width: clamp(190px, 20vw, 245px); }
+  .about-lede { font-size: clamp(1.2rem, 2vw, 1.55rem); }
 }
 
 /* ═══ REDUCED MOTION ═══ */

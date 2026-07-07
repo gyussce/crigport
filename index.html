@@ -82,15 +82,15 @@
   <section class="about" id="about">
     <div class="section-head">
       <span class="section-num">02</span>
-      <h2 class="section-title" data-split>THE HUMAN<br/>BEHIND IT</h2>
+      <h2 class="section-title" data-split>THE HUMAN<br/>BEHIND THE BUILD</h2>
     </div>
     <div class="about-grid">
       <div class="about-photos about-photos--single" id="photoStack">
         <figure class="pcard" data-speed="1.15"><img src="assets/photo_palm.jpg" alt="Abo Yussuf" /></figure>
       </div>
       <div class="about-copy">
-        <p class="about-lede" data-words>I'm Abo — a computer engineering student at the University of Illinois who builds real websites for real businesses: painters, daycares, restaurants, coaches, and everyone in between.</p>
-        <p class="about-body" data-words>Every project on this page started as a conversation and ended as a live site. I handle the whole stack — design, copy, code, launch — so owners can get back to running their business.</p>
+        <p class="about-lede" data-words>I'm Abo, a computer engineering student at the University of Illinois. I build sharp, practical websites for local businesses: painters, daycares, restaurants, coaches, and more.</p>
+        <p class="about-body" data-words>Every project here started as a conversation and became a live site. I handle the strategy, design, copy, code, and launch details, so owners can stay focused on the business.</p>
         <ul class="about-stats">
           <li><b data-count="4">0</b><span>products shipped</span></li>
           <li><b data-count="4">0</b><span>industries served</span></li>
@@ -104,9 +104,9 @@
   <section class="caps" id="caps">
     <div class="section-head">
       <span class="section-num">03</span>
-      <h2 class="section-title" data-split>WHAT I CAN<br/>BUILD FOR YOU</h2>
+      <h2 class="section-title" data-split>WHAT I BUILD<br/>FOR YOUR BUSINESS</h2>
     </div>
-    <p class="caps-lede">Every day a slow, template-built site is live, it quietly hands customers to your competitors. These three builds stop the bleeding — pick the one that fits.</p>
+    <p class="caps-lede">A slow, template-built site loses trust before customers ever call. I build the version that feels clear, fast, and unmistakably yours.</p>
 
     <div class="tiers">
       <article class="tier">
@@ -290,11 +290,14 @@
 <script>
   // Fallback: if the JS modules never boot (opened via file://, CDN unreachable, or a
   // script error), unhide everything so the site still reads as a normal page.
-  window.addEventListener("load", function () {
-    setTimeout(function () {
+  (function () {
+    function showFallback() {
       if (!window.__crigBoot) document.documentElement.classList.add("no-fx");
-    }, 2500);
-  });
+    }
+    window.addEventListener("DOMContentLoaded", function () { setTimeout(showFallback, 3200); }, { once: true });
+    window.addEventListener("load", function () { setTimeout(showFallback, 1600); }, { once: true });
+    setTimeout(showFallback, 6000);
+  })();
 </script>
 </body>
 </html>

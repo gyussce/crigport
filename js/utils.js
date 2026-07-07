@@ -9,11 +9,22 @@ export function splitChars(el) {
     [...node.childNodes].forEach((child) => {
       if (child.nodeType === 3) {
         const frag = document.createDocumentFragment();
-        for (const ch of child.textContent) {
-          const s = document.createElement("span");
-          s.className = "ch";
-          s.textContent = ch === " " ? " " : ch; // nbsp keeps width in inline-block
-          frag.appendChild(s);
+        const tokens = child.textContent.match(/\s+|\S+/g) || [];
+        for (const token of tokens) {
+          if (/^\s+$/.test(token)) {
+            frag.appendChild(document.createTextNode(" "));
+            continue;
+          }
+
+          const word = document.createElement("span");
+          word.className = "word";
+          for (const ch of token) {
+            const s = document.createElement("span");
+            s.className = "ch";
+            s.textContent = ch;
+            word.appendChild(s);
+          }
+          frag.appendChild(word);
         }
         node.replaceChild(frag, child);
       } else if (child.nodeType === 1 && child.tagName !== "BR") walk(child);

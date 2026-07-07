@@ -112,15 +112,28 @@ a:focus-visible, button:focus-visible {
 
 /* ═══ SECTION SCAFFOLD ═══ */
 section { position: relative; z-index: 2; }
-.section-head { display: flex; align-items: flex-end; gap: 2rem; padding: 0 clamp(1rem, 5vw, 4rem); margin-bottom: clamp(2rem, 6vh, 5rem); }
+.section-head {
+  width: min(100%, 1440px);
+  display: flex; align-items: flex-end; gap: clamp(0.9rem, 3vw, 2rem);
+  padding: 0 clamp(1rem, 5vw, 4rem); margin: 0 auto clamp(2rem, 6vh, 5rem);
+}
 .section-num {
+  flex: 0 0 auto;
   font-family: var(--font-display); font-weight: 700;
-  font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9;
+  font-size: clamp(2.4rem, 7vw, 6rem); line-height: 0.9;
   color: transparent; -webkit-text-stroke: 1px rgba(242, 240, 234, 0.25);
 }
 .section-title {
+  flex: 1 1 auto; min-width: 0; max-width: min(100%, 16ch);
   font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(2.2rem, 6.5vw, 5rem); line-height: 0.95; letter-spacing: 0.01em;
+  font-size: clamp(2.25rem, 6vw, 5rem); line-height: 0.96; letter-spacing: 0.01em;
+  overflow-wrap: normal; word-break: normal; text-wrap: balance;
+}
+.section-title .word,
+.hero-line .word,
+.contact-title .word {
+  display: inline-block;
+  white-space: nowrap;
 }
 .section-title .ch { display: inline-block; transform: translateY(110%) rotate(6deg); }
 
@@ -140,6 +153,25 @@ section { position: relative; z-index: 2; }
   .topbar { padding: 0.9rem 1rem; }
   .logo { font-size: 1.05rem; }
   .topnav { gap: 0.7rem; font-size: 0.68rem; letter-spacing: 0.06em; }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding-inline: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .section-num { font-size: clamp(2.1rem, 14vw, 3.2rem); }
+  .section-title {
+    max-width: 100%;
+    font-size: clamp(2.15rem, 10.5vw, 3.25rem);
+    line-height: 0.98;
+  }
+}
+
+@media (max-height: 620px) and (min-width: 760px) {
+  .section-head { margin-bottom: clamp(1.2rem, 4vh, 2.5rem); }
+  .section-num { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+  .section-title { font-size: clamp(2.35rem, 5.2vw, 4.15rem); max-width: min(100%, 18ch); }
 }
 
 /* ═══ NO-FX FALLBACK (JS modules failed to boot) ═══ */

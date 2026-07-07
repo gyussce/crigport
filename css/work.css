@@ -1,6 +1,6 @@
 /* ═══════════════════ CRIG® — work: horizontal gallery ═══════════════════ */
 .work { background: var(--bg-2); }
-.work-pin { height: 100vh; height: 100svh; overflow: hidden; display: flex; align-items: center; }
+.work-pin { height: 100vh; height: 100svh; height: 100dvh; overflow: hidden; display: flex; align-items: center; }
 .work-track {
   display: flex; align-items: center; gap: clamp(1.5rem, 4vw, 3.5rem);
   padding: 0 clamp(1rem, 6vw, 5rem);
@@ -53,4 +53,32 @@ a.card { cursor: none; }
   .work-intro { width: 78vw; }
   .card { width: min(78vw, 340px); }
   .work-outro { width: 80vw; }
+}
+
+.work--stacked .work-pin {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: clamp(5rem, 10vh, 8rem) 0;
+}
+.work--stacked .work-track {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.2rem;
+  padding: 0 clamp(1rem, 5vw, 2rem);
+}
+.work--stacked .work-intro,
+.work--stacked .work-outro {
+  width: auto;
+}
+.work--stacked .card {
+  width: 100%;
+  max-width: 420px;
+  justify-self: center;
+}
+.work--stacked .work-outro {
+  justify-content: center;
+  text-align: center;
 }

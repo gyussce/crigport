@@ -34,7 +34,12 @@ export function buildCards() {
 export function initWork() {
   const track = document.getElementById("workTrack");
   const cards = gsap.utils.toArray(".card");
-  if (reduced) { document.querySelector(".work-pin").style.overflowX = "auto"; return; }
+  const work = document.getElementById("work");
+  const shouldStack = reduced || window.matchMedia("(max-width: 760px), (max-height: 620px)").matches;
+  if (shouldStack) {
+    work.classList.add("work--stacked");
+    return;
+  }
   const getDist = () => track.scrollWidth - window.innerWidth;
   gsap.to(track, {
     x: () => -getDist(),

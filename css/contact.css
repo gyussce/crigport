@@ -1,8 +1,8 @@
 /* ═══════════════════ CRIG® — contact: holographic finale ═══════════════════ */
 .contact {
-  min-height: 100vh;
+  min-height: 100vh; min-height: 100dvh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 6rem 1rem 2rem; gap: 2.2rem;
+  text-align: center; padding: clamp(5rem, 12vh, 7rem) 1rem 2rem; gap: clamp(1.2rem, 4vh, 2.2rem);
   color: #14121c; overflow: hidden;
 }
 .contact::before {
@@ -25,13 +25,14 @@
 }
 .contact-title {
   font-family: var(--font-display); font-weight: 800;
-  font-size: clamp(4rem, 18vw, 15rem); line-height: 0.85;
+  font-size: clamp(4rem, 17vw, 15rem); line-height: 0.85;
+  max-width: 100%;
 }
 .contact-title .ch { display: inline-block; transform: translateY(110%) rotate(6deg); }
 .contact-btn {
   display: inline-block; position: relative;
   border: 1px solid #14121c; border-radius: 99px;
-  padding: 1.3rem 3.2rem;
+  min-height: 44px; padding: 1.3rem 3.2rem;
   font-size: clamp(1rem, 2.4vw, 1.5rem); font-weight: 500; letter-spacing: 0.04em;
   overflow: hidden; transition: color 0.35s, border-color 0.35s;
   will-change: transform;
@@ -105,6 +106,14 @@
   .footer { flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; }
   .contact-cta { flex-direction: column; width: 100%; }
   .contact-btn { width: 100%; text-align: center; }
+  .avail-chip { max-width: 100%; justify-content: center; text-align: center; line-height: 1.45; white-space: normal; }
+  .contact-pitch { max-width: 34ch; }
+}
+
+@media (max-height: 620px) and (min-width: 760px) {
+  .contact { justify-content: flex-start; padding-top: 4.5rem; }
+  .contact-title { font-size: clamp(4rem, 13vw, 8.5rem); }
+  .contact-btn { padding-block: 0.95rem; }
 }
 
 /* ═══ REDUCED MOTION ═══ */

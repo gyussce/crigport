@@ -86,8 +86,9 @@ export function initReveals() {
 export function initPhotoFan() {
   const card = document.querySelector("#photoStack .pcard");
   if (!card) return;
-  // rest a little BELOW center so it always clears the "THE HUMAN BEHIND IT" heading
-  gsap.set(card, { xPercent: -50, yPercent: -40 });
+  const compactViewport = window.matchMedia("(max-height: 620px) and (min-width: 760px)").matches;
+  // rest a little BELOW center so it always clears the "THE HUMAN BEHIND THE BUILD" heading
+  gsap.set(card, { xPercent: -50, yPercent: compactViewport ? -10 : -40 });
   if (reduced) return;
   // reveal uses px-y + scale/rotate/blur (leaves yPercent free for the parallax below)
   gsap.from(card, {
@@ -95,6 +96,7 @@ export function initPhotoFan() {
     ease: "power3.out",
     scrollTrigger: { trigger: "#about", start: "top 76%", end: "center 62%", scrub: 1 },
   });
+  if (compactViewport) return;
   // gentle downward drift only — never travels up toward the heading
   gsap.to(card, {
     yPercent: -26, ease: "none",
