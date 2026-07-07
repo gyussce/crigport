@@ -68,12 +68,10 @@ export function initReveals() {
       scrollTrigger: { trigger: el, start: "top 80%", end: "top 40%", scrub: !reduced },
     });
   });
-  const caps = gsap.utils.toArray(".cap-card");
-  if (caps.length && !reduced) {
-    gsap.set(caps, { opacity: 0, y: 42 });
-    ScrollTrigger.batch(caps, {
-      start: "top 88%",
-      onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", overwrite: true }),
+  if (!reduced) {
+    gsap.utils.toArray(".tier").forEach((t, i) => {
+      // clearProps drops the inline transform so the CSS :hover lift still works after
+      gsap.fromTo(t, { opacity: 0, y: 42 }, { opacity: 1, y: 0, duration: 0.7, delay: i * 0.08, ease: "power3.out", clearProps: "transform", scrollTrigger: { trigger: ".tiers", start: "top 82%" } });
     });
   }
   document.querySelectorAll(".about-stats b[data-count]").forEach((el) => {

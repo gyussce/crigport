@@ -1,4 +1,6 @@
-/* ═══════════════════ CRIG® — capabilities ═══════════════════ */
+/* ═══════════════════ CRIG® — services: 3-tier packages ═══════════════════
+   Psychology-driven: Rule of Three, featured decoy (middle), Z-pattern hierarchy,
+   chunked bullets, loss-aversion lede, adjacent social proof, standout CTA. */
 .caps {
   position: relative;
   padding: clamp(6rem, 14vh, 10rem) clamp(1rem, 5vw, 4rem);
@@ -8,47 +10,99 @@
     var(--bg);
 }
 .caps-lede {
-  max-width: 56ch; margin: 0 0 clamp(2.5rem, 6vh, 4rem);
+  max-width: 60ch; margin: 0 auto clamp(2.5rem, 6vh, 4rem); text-align: center;
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(1.2rem, 2.6vw, 1.9rem); line-height: 1.35;
 }
 .caps-lede::first-line { color: var(--acid); }
 
-.caps-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: clamp(0.8rem, 2vw, 1.2rem);
+/* ── tier grid (Rule of Three, featured in the center) ── */
+.tiers {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.4rem); align-items: stretch;
+  max-width: 1100px; margin: 0 auto;
 }
-.cap-card {
-  position: relative; padding: 1.6rem 1.5rem 1.7rem;
-  border: 1px solid var(--line); border-radius: 16px;
+.tier {
+  position: relative; display: flex; flex-direction: column;
+  padding: 2rem 1.7rem; border: 1px solid var(--line); border-radius: 18px;
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, background 0.4s;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s;
 }
-.cap-card::before {
-  content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s;
-  background: radial-gradient(120% 90% at 0% 0%, rgba(189, 91, 255, 0.16), transparent 55%);
-}
-.cap-card:hover { transform: translateY(-6px); border-color: rgba(189, 91, 255, 0.55); }
-.cap-card:hover::before { opacity: 1; }
-.cap-num {
-  font-family: var(--font-display); font-weight: 800; font-size: 0.85rem;
-  color: transparent; -webkit-text-stroke: 1px var(--acid); letter-spacing: 0.1em;
-}
-.cap-card h3 {
-  position: relative; margin: 0.8rem 0 0.6rem;
-  font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; line-height: 1.15;
-}
-.cap-card p { position: relative; color: var(--ink-dim); font-weight: 300; line-height: 1.6; font-size: 0.95rem; }
+.tier:hover { transform: translateY(-6px); border-color: rgba(189, 91, 255, 0.4); }
 
-/* tech stack */
+/* featured decoy — Von Restorff: scaled, accented, elevated */
+.tier--featured {
+  border-color: var(--acid);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(189, 91, 255, 0.18), transparent 60%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 30px 80px rgba(189, 91, 255, 0.28);
+  z-index: 2;
+}
+.tier--featured:hover { border-color: var(--acid); }
+.tier-badge {
+  position: absolute; top: -0.85rem; left: 50%; transform: translateX(-50%);
+  padding: 0.35rem 1rem; border-radius: 99px; white-space: nowrap;
+  background: var(--acid); color: #14061f; font-weight: 700;
+  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em;
+  box-shadow: 0 8px 24px rgba(189, 91, 255, 0.5);
+}
+
+.tier-head { margin-bottom: 1rem; }
+.tier-name { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 3vw, 2rem); }
+.tier-tag { display: block; margin-top: 0.4rem; color: var(--ink-dim); font-size: 0.9rem; line-height: 1.4; }
+.tier-price {
+  margin: 0.2rem 0 1.3rem; padding-bottom: 1.3rem; border-bottom: 1px solid var(--line);
+  font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink);
+}
+.tier--featured .tier-price { color: var(--acid); }
+
+.tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 0 0 1.8rem; flex: 1; }
+.tier-list li { position: relative; padding-left: 1.7rem; font-size: 0.92rem; line-height: 1.4; color: var(--ink); }
+.tier-list li::before {
+  content: "✓"; position: absolute; left: 0; top: -0.05rem;
+  color: var(--acid); font-weight: 800;
+}
+.tier-list li.tier-more {
+  padding-left: 0; margin-bottom: 0.1rem;
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-dim);
+}
+.tier-list li.tier-more::before { content: none; }
+
+/* CTAs — the featured one pops (Von Restorff) */
+.tier-cta {
+  margin-top: auto; cursor: none; width: 100%;
+  padding: 0.95rem 1rem; border-radius: 99px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.98rem; letter-spacing: 0.01em;
+  transition: transform 0.25s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+.tier-cta--ghost { background: transparent; border: 1px solid rgba(243, 236, 248, 0.4); color: var(--ink); }
+.tier-cta--ghost:hover { border-color: var(--acid); color: var(--acid); transform: translateY(-2px); }
+.tier-cta--primary {
+  background: var(--acid); border: none; color: #fff;
+  box-shadow: 0 14px 34px rgba(189, 91, 255, 0.5);
+}
+.tier-cta--primary:hover { transform: translateY(-2px); box-shadow: 0 18px 44px rgba(189, 91, 255, 0.7); }
+
+/* ── social proof (adjacent to the offer) ── */
+.proof {
+  max-width: 1100px; margin: clamp(2.5rem, 6vh, 3.5rem) auto 0;
+  display: flex; align-items: center; gap: 1rem 1.4rem; flex-wrap: wrap; justify-content: center;
+  text-align: center;
+}
+.proof-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--ink-dim); }
+.proof-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; justify-content: center; padding: 0; }
+.proof-list li { font-family: var(--font-display); font-weight: 700; font-size: clamp(0.85rem, 1.4vw, 1rem); color: var(--ink); opacity: 0.72; transition: opacity 0.3s; }
+.proof-list li:hover { opacity: 1; color: var(--acid); }
+
+/* ── breadth: tech stack (kept) ── */
 .caps-stack {
-  margin-top: clamp(2.5rem, 6vh, 4rem);
-  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+  max-width: 1100px; margin: clamp(2.5rem, 6vh, 4rem) auto 0;
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; justify-content: center;
   padding-top: 2rem; border-top: 1px solid var(--line);
 }
 .caps-stack-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--ink-dim); }
-.caps-stack ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; }
+.caps-stack ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; justify-content: center; }
 .caps-stack li {
   padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 99px;
   font-size: 0.82rem; color: var(--ink); background: rgba(255, 255, 255, 0.03);
@@ -56,20 +110,25 @@
 }
 .caps-stack li:hover { border-color: var(--acid); color: var(--acid); }
 
-/* outro + inline CTA */
+/* ── outro + inline CTA ── */
 .caps-outro {
-  margin-top: clamp(2rem, 5vh, 3rem);
+  max-width: 1100px; margin: clamp(2rem, 5vh, 3rem) auto 0; text-align: center;
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(1.1rem, 2.4vw, 1.7rem); line-height: 1.4; color: var(--ink-dim);
 }
 .caps-cta {
-  display: inline; cursor: none;
-  font-family: inherit; font-weight: 700; font-size: inherit;
+  display: inline; cursor: none; font-family: inherit; font-weight: 700; font-size: inherit;
   color: var(--acid); background: none; border: none; padding: 0;
   border-bottom: 2px solid var(--acid); transition: opacity 0.3s;
 }
 .caps-cta:hover { opacity: 0.7; }
 
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .tiers { grid-template-columns: 1fr; max-width: 460px; }
+  .tier--featured { order: -1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .cap-card { transition: none; }
+  .tier, .tier-cta { transition: none; }
 }
