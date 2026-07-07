@@ -104,10 +104,19 @@ a:focus-visible, button:focus-visible {
 }
 .topbar-book:hover { transform: translateY(-1px); }
 .topbar-book .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acid); animation: pulse 1.8s ease-in-out infinite; }
+.topbar-book-short { display: none; }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
 @media (max-width: 620px) {
+  .topbar { gap: 0.75rem; }
   .topnav { display: none; }
-  .topbar-book { padding: 0.42rem 0.9rem; font-size: 0.68rem; }
+  .topbar-book {
+    position: fixed; top: 0.9rem; right: 1rem;
+    flex: 0 0 auto; padding: 0.42rem 0.9rem; font-size: 0.68rem; white-space: nowrap;
+  }
+}
+@media (max-width: 420px) {
+  .topbar-book-full { display: none; }
+  .topbar-book-short { display: inline; }
 }
 
 /* ═══ SECTION SCAFFOLD ═══ */
