@@ -1,8 +1,8 @@
 /* ═══════════════════ CRIG® — boot sequence ═══════════════════
    data.js      → PROJECTS array (add new work there)
    utils.js     → shared flags + text splitting
-   particles.js → WebGL particle portrait
-   scroll.js    → Lenis + hero/reveals/photo fan
+   particles.js → passive WebGL ringed planet
+   scroll.js    → Lenis + hero/reveals
    gallery.js   → work cards + horizontal pin
    effects.js   → cursor, magnet, strands, clock, bubbles
    booking.js   → consultation booking modal
@@ -12,7 +12,7 @@ window.__crigBoot = true; // signals the no-fx fallback in index.html that modul
 
 import { splitChars } from "./utils.js";
 import { initParticles } from "./particles.js";
-import { initSmoothScroll, initHero, initReveals, initPhotoFan } from "./scroll.js";
+import { initSmoothScroll, initHero, initReveals } from "./scroll.js";
 import { buildCards, initWork } from "./gallery.js";
 import { initCursor, initMagnet, initStrands, initClock, initProgress, initBubbles } from "./effects.js";
 import { initBooking } from "./booking.js";
@@ -33,7 +33,6 @@ const assets = initParticles();
 runPreloader(assets).then(() => {
   initHero();
   initReveals();
-  initPhotoFan();
   initWork();
   initProgress();
   ScrollTrigger.refresh();

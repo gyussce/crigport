@@ -12,7 +12,6 @@
 <meta name="geo.region" content="US-IL" />
 <meta name="geo.placename" content="Champaign, Chicago" />
 <link rel="canonical" href="https://gyussce.github.io/crigport/" />
-<link rel="preload" as="image" href="assets/hero_head.jpg" fetchpriority="high" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="CRIG Portfolio" />
@@ -192,7 +191,11 @@
   <!-- ══════════ HERO ══════════ -->
   <section class="hero" id="hero">
     <div class="hero-glow" aria-hidden="true"></div>
-    <img class="hero-fallback" id="heroFallback" src="assets/hero_head.jpg" alt="Abo Yussuf" width="1024" height="1024" decoding="async" fetchpriority="high" />
+    <div class="hero-planet-fallback" aria-hidden="true">
+      <span class="hero-planet-core"></span>
+      <span class="hero-planet-ring hero-planet-ring--one"></span>
+      <span class="hero-planet-ring hero-planet-ring--two"></span>
+    </div>
     <div class="hero-inner">
       <p class="hero-eyebrow reveal-line">Creative developer — Champaign / Chicago, IL</p>
       <h1 class="hero-title" aria-label="Abo Yussuf">
@@ -205,7 +208,7 @@
         <a class="hero-btn hero-btn--ghost" href="#work" data-cursor="→">See the work</a>
       </div>
     </div>
-    <div class="hero-hint"><span class="hero-hint-wheel"></span>Scroll to bend the portrait</div>
+    <div class="hero-hint"><span class="hero-hint-wheel"></span>Scroll to orbit</div>
     <div class="hero-index">01 / INTRO</div>
   </section>
 
@@ -223,9 +226,6 @@
       <h2 class="section-title" data-split>THE HUMAN<br/>BEHIND THE BUILD</h2>
     </div>
     <div class="about-grid">
-      <div class="about-photos about-photos--single" id="photoStack">
-        <figure class="pcard" data-speed="1.15"><img src="assets/photo_palm.jpg" alt="Abo Yussuf standing by palm leaves at night" width="900" height="1200" loading="lazy" decoding="async" /></figure>
-      </div>
       <div class="about-copy">
         <p class="about-lede" data-words>I'm Abo, a computer engineering student at the University of Illinois. I build sharp, practical websites for local businesses: painters, daycares, restaurants, coaches, and more.</p>
         <p class="about-body" data-words>Every project here started as a conversation and became a live site. I handle the strategy, design, copy, code, and launch details, so owners can stay focused on the business.</p>

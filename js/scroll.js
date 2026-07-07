@@ -32,7 +32,7 @@ export function initHero() {
   heroState.intro();
 
   if (reduced) return;
-  // pinned three-act performance: text departs → head spins in deep relief → vortex blowout
+  // pinned hero: text departs while the ringed planet drifts quietly out.
   ScrollTrigger.create({
     trigger: "#hero",
     start: "top top",
@@ -80,26 +80,5 @@ export function initReveals() {
       trigger: el, start: "top 85%", once: true,
       onEnter: () => gsap.fromTo(el, { innerText: 0 }, { innerText: target, duration: 1.6, ease: "power2.out", snap: { innerText: 1 } }),
     });
-  });
-}
-
-export function initPhotoFan() {
-  const card = document.querySelector("#photoStack .pcard");
-  if (!card) return;
-  const compactViewport = window.matchMedia("(max-height: 620px) and (min-width: 760px)").matches;
-  // rest a little BELOW center so it always clears the "THE HUMAN BEHIND THE BUILD" heading
-  gsap.set(card, { xPercent: -50, yPercent: compactViewport ? -10 : -40 });
-  if (reduced) return;
-  // reveal uses px-y + scale/rotate/blur (leaves yPercent free for the parallax below)
-  gsap.from(card, {
-    y: 44, rotate: -4, scale: 0.92, autoAlpha: 0, filter: "blur(6px)",
-    ease: "power3.out",
-    scrollTrigger: { trigger: "#about", start: "top 76%", end: "center 62%", scrub: 1 },
-  });
-  if (compactViewport) return;
-  // gentle downward drift only — never travels up toward the heading
-  gsap.to(card, {
-    yPercent: -26, ease: "none",
-    scrollTrigger: { trigger: "#about", start: "top bottom", end: "bottom top", scrub: 1.4 },
   });
 }
