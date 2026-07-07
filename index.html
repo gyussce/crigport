@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/hero.css" />
 <link rel="stylesheet" href="css/about.css" />
 <link rel="stylesheet" href="css/work.css" />
+<link rel="stylesheet" href="css/caps.css" />
 <link rel="stylesheet" href="css/contact.css" />
 <link rel="stylesheet" href="css/booking.css" />
 </head>
@@ -41,10 +42,11 @@
   <a class="logo" href="#top">CRIG<sup>®</sup></a>
   <nav class="topnav">
     <a href="#about" data-cursor="→">About</a>
+    <a href="#caps" data-cursor="→">Services</a>
     <a href="#work" data-cursor="→">Work</a>
     <a href="#contact" data-cursor="→">Contact</a>
   </nav>
-  <div class="topbar-meta"><span class="dot"></span>Available for work</div>
+  <button class="topbar-book" data-book data-cursor="book"><span class="dot"></span>Book a call</button>
 </header>
 
 <main id="top">
@@ -60,6 +62,10 @@
         <span class="hero-line hero-line--offset" data-split>YUSSUF</span>
       </h1>
       <p class="hero-sub reveal-line">I turn small businesses into <em>unforgettable</em> websites.<br/>Hand-coded. Zero templates. Ever.</p>
+      <div class="hero-cta reveal-line">
+        <button class="hero-btn hero-btn--primary" data-book data-cursor="book">Book a free consultation</button>
+        <a class="hero-btn hero-btn--ghost" href="#work" data-cursor="→">See the work</a>
+      </div>
     </div>
     <div class="hero-hint"><span class="hero-hint-wheel"></span>Scroll to disintegrate</div>
     <div class="hero-index">01 / INTRO</div>
@@ -94,12 +100,70 @@
     </div>
   </section>
 
+  <!-- ══════════ CAPABILITIES ══════════ -->
+  <section class="caps" id="caps">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title" data-split>WHAT I CAN<br/>BUILD FOR YOU</h2>
+    </div>
+    <p class="caps-lede">A non-exhaustive list — if you can describe it, I can design, build, and ship it. Whole stack, hand-coded, no templates and no training wheels.</p>
+    <div class="caps-grid">
+      <article class="cap-card">
+        <span class="cap-num">01</span>
+        <h3>Custom Websites &amp; Web Apps</h3>
+        <p>Bespoke, hand-written front-ends — no page builders, no cookie-cutter themes. Every pixel intentional and entirely yours.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">02</span>
+        <h3>3D &amp; Interactive Experiences</h3>
+        <p>Three.js &amp; WebGL, particle systems, and scroll-driven motion — the kind of award-show polish you're looking at right now.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">03</span>
+        <h3>Booking &amp; Scheduling Systems</h3>
+        <p>Live calendars, availability logic, time-zone-aware slots, confirmations and reminders — booking flows built to actually convert.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">04</span>
+        <h3>API Integration — Anything</h3>
+        <p>Payments, maps, CRMs, email, AI, data feeds — REST or GraphQL, I wire your site into whatever service the job calls for.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">05</span>
+        <h3>E-commerce &amp; Payments</h3>
+        <p>Stripe checkout, carts, subscriptions and invoicing — take money online cleanly, securely, and without the monthly platform tax.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">06</span>
+        <h3>Performance, SEO &amp; Accessibility</h3>
+        <p>Sub-second loads, green Core Web Vitals, search-ready markup, and WCAG-friendly builds that work for every visitor and device.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">07</span>
+        <h3>Automation &amp; AI</h3>
+        <p>Chatbots, smart search, content generation, webhooks and workflow automation — put the busywork on autopilot.</p>
+      </article>
+      <article class="cap-card">
+        <span class="cap-num">08</span>
+        <h3>Deploy, Host &amp; Maintain</h3>
+        <p>Domains, SSL, CI/CD pipelines and ongoing care — I ship it live and keep it fast, secure, and up to date.</p>
+      </article>
+    </div>
+    <div class="caps-stack">
+      <span class="caps-stack-label">Fluent in</span>
+      <ul>
+        <li>JavaScript / TypeScript</li><li>React &amp; Next.js</li><li>Three.js / WebGL</li><li>GSAP</li><li>Node.js</li><li>Python</li><li>REST &amp; GraphQL</li><li>Stripe</li><li>Git &amp; CI/CD</li><li>Figma</li>
+      </ul>
+    </div>
+    <p class="caps-outro">…and whatever your project needs next. <button class="caps-cta" data-book data-cursor="book">Book a call and let's scope it ↗</button></p>
+  </section>
+
   <!-- ══════════ WORK ══════════ -->
   <section class="work" id="work">
     <div class="work-pin">
       <div class="work-track" id="workTrack">
         <header class="work-intro">
-          <span class="section-num">03</span>
+          <span class="section-num">04</span>
           <h2 class="section-title">SELECTED<br/>WORK</h2>
           <p class="work-intro-sub">Ten builds for ten businesses.<br/>Drag through time →</p>
         </header>
@@ -119,7 +183,7 @@
   <section class="contact" id="contact">
     <canvas class="strands" id="strands" aria-hidden="true"></canvas>
     <div class="bubbles" id="bubbles" aria-hidden="true"></div>
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <div class="avail-chip">
       <span class="avail-dot"></span>
       Booking new projects · <span id="availClock">--:--</span> in Chicago
@@ -128,7 +192,7 @@
     <h2 class="contact-title" data-split>LET'S<br/>BUILD</h2>
     <p class="contact-pitch">A free 30-minute call — I'll map out what your site needs and exactly what it costs. No pressure, no jargon.</p>
     <div class="contact-cta">
-      <button class="contact-btn contact-btn--primary" id="bookBtn" data-cursor="book">
+      <button class="contact-btn contact-btn--primary" id="bookBtn" data-book data-cursor="book">
         <span class="contact-btn-inner">Book a free consultation</span>
       </button>
       <a class="contact-btn contact-btn--ghost" id="magnet" href="mailto:poz4gan@gmail.com" data-cursor="✉">

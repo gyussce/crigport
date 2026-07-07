@@ -35,6 +35,17 @@
 .hero-sub { margin-top: 2.2rem; font-size: clamp(0.95rem, 1.8vw, 1.2rem); font-weight: 300; color: var(--ink-dim); line-height: 1.6; }
 .hero-sub em { font-style: normal; color: var(--acid); }
 .reveal-line { opacity: 0; transform: translateY(24px); }
+.hero-cta { margin-top: 2.4rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.hero-btn {
+  position: relative; overflow: hidden; cursor: none;
+  padding: 1rem 2rem; border-radius: 99px;
+  font-family: var(--font-body); font-size: clamp(0.9rem, 1.6vw, 1.05rem); font-weight: 600;
+  letter-spacing: 0.02em; transition: transform 0.3s, box-shadow 0.3s, color 0.35s;
+}
+.hero-btn--primary { background: var(--acid); color: #fff; border: none; box-shadow: 0 14px 34px rgba(189, 91, 255, 0.45); }
+.hero-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(189, 91, 255, 0.6); }
+.hero-btn--ghost { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(243, 236, 248, 0.4); color: var(--ink); backdrop-filter: blur(4px); }
+.hero-btn--ghost:hover { border-color: var(--acid); color: var(--acid); }
 .hero-hint {
   position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; gap: 0.7rem;

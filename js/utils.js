@@ -12,7 +12,7 @@ export function splitChars(el) {
         for (const ch of child.textContent) {
           const s = document.createElement("span");
           s.className = "ch";
-          s.textContent = ch === " " ? " " : ch;
+          s.textContent = ch === " " ? " " : ch; // nbsp keeps width in inline-block
           frag.appendChild(s);
         }
         node.replaceChild(frag, child);

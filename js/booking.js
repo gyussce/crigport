@@ -26,7 +26,6 @@ export function initBooking() {
   if (!root) return;
   els = {
     root,
-    openBtn: document.getElementById("bookBtn"),
     grid: document.getElementById("calGrid"),
     month: document.getElementById("calMonth"),
     prev: document.getElementById("calPrev"),
@@ -50,7 +49,7 @@ export function initBooking() {
   };
   state.view = monthStart(0);
 
-  els.openBtn?.addEventListener("click", open);
+  document.querySelectorAll("[data-book]").forEach((btn) => btn.addEventListener("click", open));
   root.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", close));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !root.hidden) close(); });
   els.prev.addEventListener("click", () => shiftMonth(-1));

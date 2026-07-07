@@ -1,0 +1,75 @@
+/* ═══════════════════ CRIG® — capabilities ═══════════════════ */
+.caps {
+  position: relative;
+  padding: clamp(6rem, 14vh, 10rem) clamp(1rem, 5vw, 4rem);
+  background:
+    radial-gradient(80% 60% at 88% 8%, rgba(189, 91, 255, 0.14), transparent 60%),
+    radial-gradient(70% 60% at 5% 92%, rgba(255, 84, 200, 0.1), transparent 60%),
+    var(--bg);
+}
+.caps-lede {
+  max-width: 56ch; margin: 0 0 clamp(2.5rem, 6vh, 4rem);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem); line-height: 1.35;
+}
+.caps-lede::first-line { color: var(--acid); }
+
+.caps-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(0.8rem, 2vw, 1.2rem);
+}
+.cap-card {
+  position: relative; padding: 1.6rem 1.5rem 1.7rem;
+  border: 1px solid var(--line); border-radius: 16px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s, background 0.4s;
+}
+.cap-card::before {
+  content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s;
+  background: radial-gradient(120% 90% at 0% 0%, rgba(189, 91, 255, 0.16), transparent 55%);
+}
+.cap-card:hover { transform: translateY(-6px); border-color: rgba(189, 91, 255, 0.55); }
+.cap-card:hover::before { opacity: 1; }
+.cap-num {
+  font-family: var(--font-display); font-weight: 800; font-size: 0.85rem;
+  color: transparent; -webkit-text-stroke: 1px var(--acid); letter-spacing: 0.1em;
+}
+.cap-card h3 {
+  position: relative; margin: 0.8rem 0 0.6rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; line-height: 1.15;
+}
+.cap-card p { position: relative; color: var(--ink-dim); font-weight: 300; line-height: 1.6; font-size: 0.95rem; }
+
+/* tech stack */
+.caps-stack {
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+  padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.caps-stack-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--ink-dim); }
+.caps-stack ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.6rem; padding: 0; }
+.caps-stack li {
+  padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 99px;
+  font-size: 0.82rem; color: var(--ink); background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.3s, color 0.3s;
+}
+.caps-stack li:hover { border-color: var(--acid); color: var(--acid); }
+
+/* outro + inline CTA */
+.caps-outro {
+  margin-top: clamp(2rem, 5vh, 3rem);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem); line-height: 1.4; color: var(--ink-dim);
+}
+.caps-cta {
+  display: inline; cursor: none;
+  font-family: inherit; font-weight: 700; font-size: inherit;
+  color: var(--acid); background: none; border: none; padding: 0;
+  border-bottom: 2px solid var(--acid); transition: opacity 0.3s;
+}
+.caps-cta:hover { opacity: 0.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cap-card { transition: none; }
+}

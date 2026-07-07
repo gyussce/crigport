@@ -96,10 +96,19 @@ a:focus-visible, button:focus-visible {
 .topnav a { position: relative; padding: 0.2rem 0; }
 .topnav a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
 .topnav a:hover::after { transform: scaleX(1); transform-origin: left; }
-.topbar-meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-dim); }
-.topbar-meta .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acid); animation: pulse 1.8s ease-in-out infinite; }
+.topbar-book {
+  display: inline-flex; align-items: center; gap: 0.55rem; cursor: none;
+  padding: 0.5rem 1.1rem; border: 1px solid currentColor; border-radius: 99px;
+  font-family: var(--font-body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.14em;
+  color: inherit; background: transparent; transition: transform 0.25s;
+}
+.topbar-book:hover { transform: translateY(-1px); }
+.topbar-book .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acid); animation: pulse 1.8s ease-in-out infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
-@media (max-width: 760px) { .topbar-meta { display: none; } }
+@media (max-width: 620px) {
+  .topnav { display: none; }
+  .topbar-book { padding: 0.42rem 0.9rem; font-size: 0.68rem; }
+}
 
 /* ═══ SECTION SCAFFOLD ═══ */
 section { position: relative; z-index: 2; }

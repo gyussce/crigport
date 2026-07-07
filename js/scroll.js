@@ -68,6 +68,14 @@ export function initReveals() {
       scrollTrigger: { trigger: el, start: "top 80%", end: "top 40%", scrub: !reduced },
     });
   });
+  const caps = gsap.utils.toArray(".cap-card");
+  if (caps.length && !reduced) {
+    gsap.set(caps, { opacity: 0, y: 42 });
+    ScrollTrigger.batch(caps, {
+      start: "top 88%",
+      onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", overwrite: true }),
+    });
+  }
   document.querySelectorAll(".about-stats b[data-count]").forEach((el) => {
     const target = +el.dataset.count;
     ScrollTrigger.create({
