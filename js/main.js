@@ -1,39 +1,26 @@
-/* ═══════════════════ CRIG® — boot sequence ═══════════════════
-   data.js      → PROJECTS array (add new work there)
-   utils.js     → shared flags + text splitting
-   particles.js → passive WebGL ringed planet
-   scroll.js    → Lenis + hero/reveals
-   gallery.js   → work cards + horizontal pin
-   effects.js   → cursor, magnet, strands, clock, bubbles
-   booking.js   → consultation booking modal
-   preloader.js → loading screen
-════════════════════════════════════════════════════════════════ */
-window.__crigBoot = true; // signals the no-fx fallback in index.html that modules loaded
+import { initBooking } from './booking.js';
 
-import { splitChars } from "./utils.js";
-import { initParticles } from "./particles.js";
-import { initSmoothScroll, initHero, initReveals } from "./scroll.js";
-import { buildCards, initWork } from "./gallery.js";
-import { initCursor, initMagnet, initStrands, initClock, initProgress, initBubbles } from "./effects.js";
-import { initBooking } from "./booking.js";
-import { runPreloader } from "./preloader.js";
-
-splitChars(document.querySelector(".hero-line"));
-splitChars(document.querySelector(".hero-line--offset"));
-buildCards();
-initSmoothScroll();
-initCursor();
-initMagnet();
-initClock();
-initStrands();
-initBubbles();
 initBooking();
 
-const assets = initParticles();
-runPreloader(assets).then(() => {
-  initHero();
-  initReveals();
-  initWork();
-  initProgress();
-  ScrollTrigger.refresh();
-});
+const clock = document.getElementById('availClock');
+const updateClock = () => {
+  clock.textContent = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit',
+  }).format(new Date());
+  document.getElementById('clock').textContent = `${clock.textContent} · Chicago`;
+};
+updateClock();
+setInterval(updateClock, 60000);
+
+// Highlight the section currently being read, including direct anchor visits.
+const links = [...document.querySelectorAll('.topnav a')];
+const observer = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    links.forEach((link) => {
+      if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+}, { rootMargin: '-15% 0px -55% 0px' });
+document.querySelectorAll('main > section').forEach((section) => observer.observe(section));

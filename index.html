@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="css/caps.css" />
 <link rel="stylesheet" href="css/contact.css" />
 <link rel="stylesheet" href="css/booking.css" />
+<link rel="stylesheet" href="css/refinement.css" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -160,24 +161,10 @@
 </head>
 <body>
 
-<!-- ══════════ PRELOADER ══════════ -->
-<div class="preloader" id="preloader">
-  <div class="preloader-name" aria-hidden="true">
-    <span>C</span><span>R</span><span>I</span><span>G</span>
-  </div>
-  <div class="preloader-count" id="preCount">0</div>
-  <div class="preloader-bar"><div class="preloader-bar-fill" id="preBar"></div></div>
-</div>
-
-<!-- ══════════ FIXED LAYERS ══════════ -->
-<canvas id="gl" class="gl-canvas"></canvas>
-<div class="grain" aria-hidden="true"></div>
-<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
-<div class="progress" id="progress" aria-hidden="true"></div>
-
+<a class="skip-link" href="#top">Skip to content</a>
 <header class="topbar">
   <a class="logo" href="#top">CRIG<sup>®</sup></a>
-  <nav class="topnav">
+  <nav class="topnav" aria-label="Main navigation">
     <a href="#about" data-cursor="→">About</a>
     <a href="#caps" data-cursor="→">Services</a>
     <a href="#work" data-cursor="→">Work</a>
@@ -186,30 +173,26 @@
   <button class="topbar-book" data-book data-cursor="book"><span class="dot"></span><span class="topbar-book-full">Book a call</span><span class="topbar-book-short">Book</span></button>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
   <!-- ══════════ HERO ══════════ -->
   <section class="hero" id="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-planet-fallback" aria-hidden="true">
-      <span class="hero-planet-core"></span>
-      <span class="hero-planet-ring hero-planet-ring--one"></span>
-      <span class="hero-planet-ring hero-planet-ring--two"></span>
-    </div>
     <div class="hero-inner">
-      <p class="hero-eyebrow reveal-line">Creative developer — Champaign / Chicago, IL</p>
+      <p class="hero-eyebrow reveal-line">Independent designer &amp; developer</p>
       <h1 class="hero-title" aria-label="Abo Yussuf">
         <span class="hero-line" data-split>ABO</span>
         <span class="hero-line hero-line--offset" data-split>YUSSUF</span>
       </h1>
-      <p class="hero-sub reveal-line">I build cinematic websites with <em>depth</em>, motion, and strategy.<br/>Hand-coded. Zero templates. Ever.</p>
+      <p class="hero-sub reveal-line">Distinctive websites.<br/>Built with <em>purpose.</em></p>
+      <p class="hero-description">I turn big ideas into thoughtful digital experiences for small businesses. From the first sketch to the final line of code.</p>
       <div class="hero-cta reveal-line">
-        <button class="hero-btn hero-btn--primary" data-book data-cursor="book">Book a free consultation</button>
+        <button class="hero-btn hero-btn--primary" data-book data-cursor="book">Let’s talk about your project ↗</button>
         <a class="hero-btn hero-btn--ghost" href="#work" data-cursor="→">See the work</a>
       </div>
     </div>
-    <div class="hero-hint"><span class="hero-hint-wheel"></span>Scroll to orbit</div>
-    <div class="hero-index">01 / INTRO</div>
+    <figure class="hero-portrait"><img src="assets/portrait_suit.jpg" alt="Abo Yussuf" width="1600" height="1200" fetchpriority="high" /><figcaption><span>Abo Yussuf</span><span>Champaign / Chicago, IL</span></figcaption><span class="portrait-stamp" aria-hidden="true">Design meets<br/><em>engineering.</em></span></figure>
+    <div class="hero-hint">Scroll to explore ↓</div>
+    <div class="hero-index">DESIGN · CODE · CRAFT</div>
   </section>
 
   <!-- marquee -->
@@ -219,10 +202,33 @@
     </div>
   </div>
 
+  <!-- ══════════ WORK ══════════ -->
+  <section class="work" id="work">
+    <div class="work-pin">
+      <div class="work-track" id="workTrack">
+        <header class="work-intro">
+          <span class="section-num">01 / SELECTED PROJECTS</span>
+          <h2 class="section-title">SELECTED<br/>WORK</h2>
+          <p class="work-intro-sub">A few ideas, brought to life.<br/>Explore the sites, meet the businesses.</p>
+        </header>
+        <a class="card" href="projects/AccelerationAFM/index.html" target="_blank" rel="noopener" style="--accent:#b16bff"><div class="project-visual"><div class="card-media"><img src="assets/proj_velocity.svg" alt="Velocity project preview" loading="lazy" width="800" height="600" /></div><span class="card-idx">01</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Sport & Performance</span><h3 class="card-title">Velocity</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/BeautyDemo/index.html" target="_blank" rel="noopener" style="--accent:#ff7ac6"><div class="project-visual"><div class="card-big">GLOW</div><span class="card-idx">02</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Beauty & Wellness</span><h3 class="card-title">Glow Beauty Studio</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/HernandezPaintingSolution/index.html" target="_blank" rel="noopener" style="--accent:#ff8a3d"><div class="project-visual"><div class="card-media"><img src="assets/proj_remodel.jpg" alt="Perfect Place Remodeling project preview" loading="lazy" width="800" height="600" /></div><span class="card-idx">03</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Construction</span><h3 class="card-title">Perfect Place Remodeling</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/PaintPros/index.html" target="_blank" rel="noopener" style="--accent:#5ca8ff"><div class="project-visual"><div class="card-big">FRESH<br/>COATS</div><span class="card-idx">04</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Painting Contractor</span><h3 class="card-title">Midwest Paint Pros</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/IULDemo/index.html" target="_blank" rel="noopener" style="--accent:#f5c84b"><div class="project-visual"><div class="card-big">GROW</div><span class="card-idx">05</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Finance & Insurance</span><h3 class="card-title">Marcus Cole — IUL</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/UltEx/index.html" target="_blank" rel="noopener" style="--accent:#ff5c5c"><div class="project-visual"><div class="card-big">COLOR</div><span class="card-idx">06</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Painting Contractor</span><h3 class="card-title">Hernandez Painting Solutions</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/NolanSteps/index.html" target="_blank" rel="noopener" style="--accent:#7cd9ff"><div class="project-visual"><div class="card-media"><img src="assets/proj_daycare.jpg" alt="Tiny Steps Daycare project preview" loading="lazy" width="800" height="600" /></div><span class="card-idx">07</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Childcare</span><h3 class="card-title">Tiny Steps Daycare</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/ScottLaundry/index.html" target="_blank" rel="noopener" style="--accent:#6fffc2"><div class="project-visual"><div class="card-media"><img src="assets/proj_laundry.jpg" alt="Ashley's Laundry Service project preview" loading="lazy" width="800" height="600" /></div><span class="card-idx">08</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Local Service</span><h3 class="card-title">Ashley's Laundry Service</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="projects/LagosLounge/index.html" target="_blank" rel="noopener" style="--accent:#ffb443"><div class="project-visual"><div class="card-media"><img src="assets/proj_lagos.jpg" alt="Lagos Grill & Lounge project preview" loading="lazy" width="800" height="600" /></div><span class="card-idx">09</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Restaurant</span><h3 class="card-title">Lagos Grill & Lounge</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+<a class="card" href="https://handyplus.us/" target="_blank" rel="noopener" style="--accent:#ffe14d"><div class="project-visual"><div class="card-media"><img src="assets/proj_juan.jpg" alt="Handy Plus project preview" loading="lazy" width="800" height="600" /></div><span class="card-idx">10</span><span class="project-arrow" aria-hidden="true">↗</span></div><div class="card-body"><span class="card-tag">Home Services</span><h3 class="card-title">Handy Plus</h3><div class="card-meta"><span>Design &amp; development · 2026</span><span>View site ↗</span></div></div></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════ ABOUT ══════════ -->
   <section class="about" id="about">
     <div class="section-head">
-      <span class="section-num">02</span>
+      <span class="section-num">02 / ABOUT ME</span>
       <h2 class="section-title" data-split>THE HUMAN<br/>BEHIND THE BUILD</h2>
     </div>
     <div class="about-grid">
@@ -230,9 +236,9 @@
         <p class="about-lede" data-words>I'm Abo, a computer engineering student at the University of Illinois. I build sharp, practical websites for local businesses: painters, daycares, restaurants, coaches, and more.</p>
         <p class="about-body" data-words>Every project here started as a conversation and became a live site. I handle the strategy, design, copy, code, and launch details, so owners can stay focused on the business.</p>
         <ul class="about-stats">
-          <li><b data-count="4">0</b><span>products shipped</span></li>
-          <li><b data-count="4">0</b><span>industries served</span></li>
-          <li><b data-count="100">0</b><span>% hand-coded</span></li>
+          <li><b>10</b><span>featured projects</span></li>
+          <li><b>01</b><span>creative partner</span></li>
+          <li><b>100</b><span>% hand-coded</span></li>
         </ul>
       </div>
     </div>
@@ -241,10 +247,10 @@
   <!-- ══════════ CAPABILITIES ══════════ -->
   <section class="caps" id="caps">
     <div class="section-head">
-      <span class="section-num">03</span>
+      <span class="section-num">03 / SERVICES</span>
       <h2 class="section-title" data-split>WHAT I BUILD<br/>FOR YOUR BUSINESS</h2>
     </div>
-    <p class="caps-lede">A slow, template-built site loses trust before customers ever call. I build the version that feels clear, fast, and unmistakably yours.</p>
+    <p class="caps-lede">Your next chapter starts with the right website. Choose a starting point; we’ll shape the details around your business.</p>
 
     <div class="tiers">
       <article class="tier">
@@ -263,7 +269,7 @@
       </article>
 
       <article class="tier tier--featured">
-        <span class="tier-badge">Most popular</span>
+        <span class="tier-badge">The full experience</span>
         <header class="tier-head">
           <span class="tier-name">Signature</span>
           <span class="tier-tag">The site that makes people stop scrolling</span>
@@ -311,20 +317,6 @@
     <p class="caps-outro">…and whatever your project needs next. <button class="caps-cta" data-book data-cursor="book">Book a call and let's scope it ↗</button></p>
   </section>
 
-  <!-- ══════════ WORK ══════════ -->
-  <section class="work" id="work">
-    <div class="work-pin">
-      <div class="work-track" id="workTrack">
-        <header class="work-intro">
-          <span class="section-num">04</span>
-          <h2 class="section-title">SELECTED<br/>WORK</h2>
-          <p class="work-intro-sub">Ten builds for ten businesses.<br/>Drag through time →</p>
-        </header>
-        <!-- cards injected by JS -->
-      </div>
-    </div>
-  </section>
-
   <!-- marquee -->
   <div class="marquee marquee--reverse" aria-hidden="true">
     <div class="marquee-track">
@@ -334,9 +326,7 @@
 
   <!-- ══════════ CONTACT ══════════ -->
   <section class="contact" id="contact">
-    <canvas class="strands" id="strands" aria-hidden="true"></canvas>
-    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
-    <span class="section-num">05</span>
+    <span class="section-num">04 / YOUR NEXT CHAPTER</span>
     <div class="avail-chip">
       <span class="avail-dot"></span>
       Booking new projects · <span id="availClock">--:--</span> in Chicago
@@ -420,22 +410,6 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<script type="importmap">{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }</script>
 <script type="module" src="js/main.js"></script>
-<script>
-  // Fallback: if the JS modules never boot (opened via file://, CDN unreachable, or a
-  // script error), unhide everything so the site still reads as a normal page.
-  (function () {
-    function showFallback() {
-      if (!window.__crigBoot) document.documentElement.classList.add("no-fx");
-    }
-    window.addEventListener("DOMContentLoaded", function () { setTimeout(showFallback, 3200); }, { once: true });
-    window.addEventListener("load", function () { setTimeout(showFallback, 1600); }, { once: true });
-    setTimeout(showFallback, 6000);
-  })();
-</script>
 </body>
 </html>

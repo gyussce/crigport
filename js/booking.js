@@ -52,6 +52,14 @@ export function initBooking() {
   document.querySelectorAll("[data-book]").forEach((btn) => btn.addEventListener("click", open));
   root.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", close));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !root.hidden) close(); });
+  root.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab") return;
+    const items = [...root.querySelectorAll('button:not(:disabled), a[href], input, textarea')]
+      .filter((el) => el.getClientRects().length);
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   els.prev.addEventListener("click", () => shiftMonth(-1));
   els.next.addEventListener("click", () => shiftMonth(1));
   els.detailsBack.addEventListener("click", () => showStep(1));
@@ -66,6 +74,8 @@ function open() {
   lastFocus = document.activeElement;
   els.root.hidden = false;
   document.body.classList.add("booking-open");
+  document.querySelector("main").inert = true;
+  document.querySelector(".topbar").inert = true;
   window.lenis?.stop();
   showStep(1);
   els.root.querySelector(".booking-close").focus();
@@ -73,6 +83,8 @@ function open() {
 function close() {
   els.root.hidden = true;
   document.body.classList.remove("booking-open");
+  document.querySelector("main").inert = false;
+  document.querySelector(".topbar").inert = false;
   window.lenis?.start();
   lastFocus?.focus?.();
 }
