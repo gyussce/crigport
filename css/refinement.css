@@ -149,3 +149,23 @@ button { font: inherit; }
   .hero { grid-template-columns: minmax(0, 1fr); }
   .hero-title { font-size: clamp(2.9rem, 11.7vw, 4.5rem); }
 }
+
+/* Standalone pages share the same navigation, booking dialog, and footer. */
+body[class^="page-"] { min-height: 100svh; display: flex; flex-direction: column; }
+body[class^="page-"] main { flex: 1; }
+body:not(.page-home) main { padding-top: 81px; }
+body:not(.page-home) main > section { min-height: calc(100svh - 170px); }
+.page-about .about { align-content: center; }
+.page-contact .contact { padding-top: 60px; padding-bottom: 60px; }
+.page-contact .contact-title { font-size: clamp(4rem, 10vw, 9rem); }
+.page-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.site-footer { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding: 26px 5%; border-top: 1px solid var(--line); color: var(--ink-dim); font-size: .72rem; line-height: 1.5; background: var(--bg); }
+.site-footer a { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); }
+.page-contact .site-footer { margin-top: 0; }
+@media (max-width: 620px) {
+  body:not(.page-home) main { padding-top: 109px; }
+  .topnav { gap: 8px; }
+  .page-contact .contact { padding-block: 48px; }
+  .site-footer { justify-content: center; text-align: center; gap: 12px; }
+  .site-footer > span { width: 100%; }
+}

@@ -76,6 +76,7 @@ function open() {
   document.body.classList.add("booking-open");
   document.querySelector("main").inert = true;
   document.querySelector(".topbar").inert = true;
+  document.querySelector(".site-footer").inert = true;
   window.lenis?.stop();
   showStep(1);
   els.root.querySelector(".booking-close").focus();
@@ -85,6 +86,7 @@ function close() {
   document.body.classList.remove("booking-open");
   document.querySelector("main").inert = false;
   document.querySelector(".topbar").inert = false;
+  document.querySelector(".site-footer").inert = false;
   window.lenis?.start();
   lastFocus?.focus?.();
 }

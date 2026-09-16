@@ -1,26 +1,22 @@
 import { initBooking } from './booking.js';
 
+// Preserve incoming links to sections from the former single-page site.
+const legacyPages = { '#work': 'work.html', '#about': 'about.html', '#caps': 'services.html', '#contact': 'contact.html' };
+if (document.body.classList.contains('page-home') && legacyPages[location.hash]) {
+  location.replace(new URL(legacyPages[location.hash], location.href).href);
+}
+
 initBooking();
 
-const clock = document.getElementById('availClock');
 const updateClock = () => {
-  clock.textContent = new Intl.DateTimeFormat('en-US', {
+  const time = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit',
   }).format(new Date());
-  document.getElementById('clock').textContent = `${clock.textContent} · Chicago`;
+  const availability = document.getElementById('availClock');
+  if (availability) availability.textContent = time;
+  const clock = document.getElementById('clock');
+  if (clock) clock.textContent = `${time} · Chicago`;
 };
 updateClock();
 setInterval(updateClock, 60000);
-
-// Highlight the section currently being read, including direct anchor visits.
-const links = [...document.querySelectorAll('.topnav a')];
-const observer = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (!entry.isIntersecting) continue;
-    links.forEach((link) => {
-      if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }
-}, { rootMargin: '-15% 0px -55% 0px' });
-document.querySelectorAll('main > section').forEach((section) => observer.observe(section));
+document.getElementById('year').textContent = new Date().getFullYear();

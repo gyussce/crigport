@@ -16,9 +16,14 @@ visitor's email app; it does not reserve a time automatically.
 
 ## Structure
 
-- `index.html`: page content and ten project cards; edit project links here.
+- `index.html`: concise home page and introduction.
+- `work.html`: all ten project cards; edit project links here.
+- `about.html`: biography and background.
+- `services.html`: website packages and capabilities.
+- `contact.html`: consultation and email contact.
+- Each page contains static navigation, a footer, and the booking dialog; keep these shared sections consistent when editing.
 - `css/`: section styles; `refinement.css` defines the current editorial design.
-- `js/main.js`: booking initialization, Chicago clocks, and active navigation.
+- `js/main.js`: booking initialization, Chicago clocks, and legacy section-link redirects.
 - `js/booking.js`: consultation calendar and email/calendar handoff.
 - `assets/`: portrait and project imagery.
 - `projects/`: linked client builds.
